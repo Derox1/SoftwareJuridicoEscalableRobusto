@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Aplicacion\bin\**" />
+    <Compile Remove="Aplicacion\obj\**" />
+    <Compile Remove="Dominio\bin\**" />
+    <Compile Remove="Dominio\obj\**" />
+    <Compile Remove="Infraestructura\bin\**" />
+    <Compile Remove="Infraestructura\obj\**" />
+    <Content Remove="Aplicacion\bin\**" />
+    <Content Remove="Aplicacion\obj\**" />
+    <Content Remove="Dominio\bin\**" />
+    <Content Remove="Dominio\obj\**" />
+    <Content Remove="Infraestructura\bin\**" />
+    <Content Remove="Infraestructura\obj\**" />
+    <EmbeddedResource Remove="Aplicacion\bin\**" />
+    <EmbeddedResource Remove="Aplicacion\obj\**" />
+    <EmbeddedResource Remove="Dominio\bin\**" />
+    <EmbeddedResource Remove="Dominio\obj\**" />
+    <EmbeddedResource Remove="Infraestructura\bin\**" />
+    <EmbeddedResource Remove="Infraestructura\obj\**" />
+    <None Remove="Aplicacion\bin\**" />
+    <None Remove="Aplicacion\obj\**" />
+    <None Remove="Dominio\bin\**" />
+    <None Remove="Dominio\obj\**" />
+    <None Remove="Infraestructura\bin\**" />
+    <None Remove="Infraestructura\obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings - Copia.Development.json.example">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="appsettings - Copia.json.example">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Aplicacion\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="Infraestructura\Infraestructura.csproj" />
+  </ItemGroup>
+
+</Project>

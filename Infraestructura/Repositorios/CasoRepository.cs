@@ -1,0 +1,49 @@
+﻿using Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
+using Infraestructura.Persistencia;
+using Aplicacion.Repositorio;
+
+namespace Infraestructura.Repositorios
+{
+    public class CasoRepository : ICasoRepository
+    {
+        private readonly AppDbContext _context;
+
+        public CasoRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IEnumerable<Caso>> ObtenerTodosAsync()
+        {
+            return await _context.Casos.ToListAsync();
+        }
+
+        public async Task<Caso?> ObtenerPorIdAsync(int casoId)
+        {
+            return await _context.Casos.FindAsync(casoId);
+        }
+
+        public async Task CrearAsync(Caso nuevoCaso)
+        {
+            _context.Casos.Add(nuevoCaso);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task ActualizarAsync(Caso caso)
+        {
+            _context.Casos.Update(caso);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task EliminarAsync(Caso caso)
+        {
+            _context.Casos.Remove(caso);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<Caso?> ObtenerPorId(int id)
+        {
+            return await _context.Casos.FindAsync(id);
+        }
+    }
+}
