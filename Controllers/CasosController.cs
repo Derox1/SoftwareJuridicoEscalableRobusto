@@ -48,13 +48,13 @@ namespace API.Controllers
         {
             if (string.IsNullOrWhiteSpace(request.Titulo) || string.IsNullOrWhiteSpace(request.NombreCliente))
                 return BadRequest("El título y el nombre del cliente son obligatorios.");
-           //validaciones de entrada del cliente antes de pasar 
+            //validaciones de entrada del cliente antes de pasar 
             if (string.IsNullOrWhiteSpace(request.Descripcion) || (request.Descripcion.Length < 10))
                 return BadRequest("La descripción debe tener al menos 10 caracteres.");
             var resultado = await _crearCasoService.EjecutarAsync(request);
             return StatusCode(201);
-          
-         }
+
+        }
         // PUT /api/casos/{id}/cerrar
         [HttpPut("{id}/cerrar")]
         public async Task<IActionResult>CerrarCaso(int id)
