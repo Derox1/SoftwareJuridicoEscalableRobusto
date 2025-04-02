@@ -5,6 +5,10 @@ using Infraestructura.Repositorios;
 using Aplicacion.Servicios.Casos;
 using Aplicacion.Servicios;
 using Aplicacion.Casos;
+using FluentValidation.AspNetCore;
+using Aplicacion.Validaciones;
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +24,10 @@ builder.Services.AddScoped<FormateadorNombreService>();
 builder.Services.AddScoped<CrearCasoService>();
 builder.Services.AddScoped<CerrarCasoService>();
 builder.Services.AddScoped<EliminarCasoService>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+
+
+
 
 
 
@@ -28,7 +36,8 @@ builder.Services.AddScoped<EliminarCasoService>();
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CrearCasoRequestValidator>());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

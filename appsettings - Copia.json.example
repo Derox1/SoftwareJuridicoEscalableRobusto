@@ -5,9 +5,8 @@
       "Microsoft.AspNetCore": "Warning"
     }
   },
-
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection": "Server=DESKTOP-KKBEMLR;Database=SistemaGestionCasosDB;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True"
+    "DefaultConnection": "Server=MI_SERVIDOR;Database=MI_BASE_DATOS;User Id=MI_USUARIO;Password=MI_PASSWORD;TrustServerCertificate=True;"
   }
 }

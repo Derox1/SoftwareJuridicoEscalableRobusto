@@ -14,6 +14,7 @@ namespace Infraestructura.Persistencia
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Caso> Casos { get; set; } 
+        public DbSet<Cliente> Clientes { get; set; }
 
 
         //este codigo es para
@@ -21,6 +22,11 @@ namespace Infraestructura.Persistencia
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+            //modelBuilder.Entity<Caso>();
+            //.HasOne(c => c.Cliente)
+            //.WithMany(cl => cl.Casos)
+            //.HasForeignKey(c => c.ClienteId)
+            // .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

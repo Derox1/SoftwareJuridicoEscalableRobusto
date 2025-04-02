@@ -1,4 +1,5 @@
-﻿using Dominio.Entidades;
+﻿using Aplicacion.DTO;
+using Dominio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ using System.Threading.Tasks;
             Task ActualizarAsync(Caso caso);
             Task<Caso?> ObtenerPorId(int id);
             Task EliminarAsync(Caso caso);
+        Task<List<ConteoPorClienteDto>> ObtenerConteoCasosPorClienteAsync();
+
 
 
     }

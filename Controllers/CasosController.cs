@@ -6,6 +6,8 @@ using Dominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using Aplicacion.Repositorio;
 using Aplicacion.Servicios;
+using Microsoft.EntityFrameworkCore;
+using Infraestructura.Repositorios;
 
 namespace API.Controllers
 {
@@ -19,19 +21,24 @@ namespace API.Controllers
         private readonly CerrarCasoService _cerrarCasosService;
         private readonly ActualizarCasoService _actualizarCasoService;
         private readonly EliminarCasoService _eliminarCasoService;
+        private readonly ICasoRepository _casoRepository;
 
 
         public CasosController(ListarCasosService listarCasosService,
                               CrearCasoService crearCasosService,
                               CerrarCasoService cerrarCasoService,
                               ActualizarCasoService actualizarCasoService,
-                              EliminarCasoService eliminarCasoService)
+                              EliminarCasoService eliminarCasoService,
+                              ICasoRepository casoRepository
+                             )
         {
             _listarCasosService = listarCasosService;
             _crearCasoService = crearCasosService;
             _actualizarCasoService = actualizarCasoService;
             _cerrarCasosService = cerrarCasoService;
             _eliminarCasoService = eliminarCasoService;
+            _casoRepository = casoRepository;
+
         }
         // GET /api/casos
 
@@ -57,16 +64,16 @@ namespace API.Controllers
         }
         // PUT /api/casos/{id}/cerrar
         [HttpPut("{id}/cerrar")]
-        public async Task<IActionResult>CerrarCaso(int id)
+        public async Task<IActionResult> CerrarCaso(int id)
         {
             try
             {
                 var resultado = await _cerrarCasosService.EjecutarAsync(id);
 
-                if (resultado != "caso cerrado correctamente") ;
+                if (resultado != "caso cerrado correctamente");
                 return BadRequest();
             }
-            catch (InvalidOperationException ex )
+            catch (InvalidOperationException ex)
             {
                 return NotFound(ex.Message); // "El caso no existe."    
             }
@@ -93,7 +100,7 @@ namespace API.Controllers
                 return StatusCode(500, $"Error al actualizar el caso: {ex.Message}");
             }
         }
-      
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
@@ -107,5 +114,12 @@ namespace API.Controllers
                 return NotFound(new { mensaje = ex.Message });
             }
         }
-     }
+        [HttpGet("conteo-casos")]
+        public async Task<ActionResult<List<ConteoPorClienteDto>>> ObtenerConteoCasosPorCliente()
+        {
+            var resultado = await _casoRepository.ObtenerConteoCasosPorClienteAsync();
+            return Ok(resultado);
+        }
+
+    }
 }

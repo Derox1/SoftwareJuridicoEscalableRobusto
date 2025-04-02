@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Infraestructura.Persistencia;
 using Aplicacion.Repositorio;
+using Aplicacion.DTO;
+
 
 namespace Infraestructura.Repositorios
 {
@@ -45,5 +47,21 @@ namespace Infraestructura.Repositorios
         {
             return await _context.Casos.FindAsync(id);
         }
+
+        public async Task<List<ConteoPorClienteDto>> ObtenerConteoCasosPorClienteAsync()
+        {
+            return await _context.Casos
+             .Include(c => c.Cliente) // 👈 esto trae el nombre del cliente
+             .GroupBy(c => new { c.ClienteId, c.Cliente.Nombre })
+             .Select(g => new ConteoPorClienteDto
+             {
+                 ClienteId = g.Key.ClienteId,
+                 NombreCliente = g.Key.Nombre,
+                 CantidadCasos = g.Count()
+             })
+             .ToListAsync();
+        }
+
+
     }
 }
