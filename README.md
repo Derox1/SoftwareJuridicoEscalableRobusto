@@ -1,27 +1,22 @@
-﻿ 💡 Reemplazá `"TU_USUARIO"` y `"TU_REPOSITORIO"` por lo tuyo real
-# Sistema de Gestión de Casos Jurídicos
+﻿# Sistema de Gestión de Casos Jurídicos
 
-API RESTful desarrollada con .NET Core y Entity Framework Core usando Clean Architecture. Permite la gestión de casos jurídicos, clientes y funcionalidades relacionadas.
+Backend robusto en .NET 8 con Clean Architecture, EF Core y buenas prácticas.
 
-## Tecnologías utilizadas
-
-- .NET 6 / 7 / 8
-- Entity Framework Core
+## Tecnologías
+- ASP.NET Core 8
+- EF Core 9
 - SQL Server
-- Clean Architecture
-- Git + GitHub
 - Swagger
-- Bootstrap (en frontend)
-- Angular (en progreso)
-- Docker (básico)
-- CI/CD con GitHub Actions (en configuración)
+- FluentValidation
 
----
+## Funcionalidades
+✅ CRUD completo para entidad Caso  
+✅ Relación 1:N entre Cliente y Casos  
+✅ Validación con FluentValidation  
+✅ Creación automática de cliente  
+✅ Swagger operativo para testing  
 
-## Cómo correr el proyecto localmente
-
-### 1. Clonar el repositorio
-
-```bash
-git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-cd TU_REPOSITORIO
+## Cómo correrlo
+1. Restaurar paquetes con `dotnet restore`
+2. Aplicar migraciones si es necesario: `dotnet ef database update`
+3. Ejecutar con `dotnet run` desde la API
