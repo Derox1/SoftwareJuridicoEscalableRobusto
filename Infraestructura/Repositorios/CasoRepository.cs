@@ -61,6 +61,12 @@ namespace Infraestructura.Repositorios
              })
              .ToListAsync();
         }
+        public IQueryable<Caso> ObtenerQueryable()
+        {
+            return _context.Casos
+                .Include(c => c.Cliente)
+                .AsNoTracking(); // Mejora rendimiento para lectura
+        }
 
 
     }

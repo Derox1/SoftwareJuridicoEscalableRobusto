@@ -7,6 +7,7 @@ using Aplicacion.Servicios;
 using Aplicacion.Casos;
 using FluentValidation.AspNetCore;
 using Aplicacion.Validaciones;
+using API.Middlewares;
 
 
 
@@ -34,6 +35,7 @@ builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
 
 
+
 // Add services to the container.
 
 builder.Services.AddControllers()
@@ -43,15 +45,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
 
 app.UseAuthorization();
 

@@ -6,12 +6,10 @@ using Dominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using Aplicacion.Repositorio;
 using Aplicacion.Servicios;
-using Microsoft.EntityFrameworkCore;
-using Infraestructura.Repositorios;
+using Microsoft.AspNetCore.Http;
 
 namespace API.Controllers
 {
-    //
     [ApiController]
     [Route("api/[controller]")]
     public class CasosController : ControllerBase
@@ -23,14 +21,13 @@ namespace API.Controllers
         private readonly EliminarCasoService _eliminarCasoService;
         private readonly ICasoRepository _casoRepository;
 
-
-        public CasosController(ListarCasosService listarCasosService,
-                              CrearCasoService crearCasosService,
-                              CerrarCasoService cerrarCasoService,
-                              ActualizarCasoService actualizarCasoService,
-                              EliminarCasoService eliminarCasoService,
-                              ICasoRepository casoRepository
-                             )
+        public CasosController(
+            ListarCasosService listarCasosService,
+            CrearCasoService crearCasosService,
+            CerrarCasoService cerrarCasoService,
+            ActualizarCasoService actualizarCasoService,
+            EliminarCasoService eliminarCasoService,
+            ICasoRepository casoRepository)
         {
             _listarCasosService = listarCasosService;
             _crearCasoService = crearCasosService;
@@ -38,88 +35,82 @@ namespace API.Controllers
             _cerrarCasosService = cerrarCasoService;
             _eliminarCasoService = eliminarCasoService;
             _casoRepository = casoRepository;
-
         }
-        // GET /api/casos
+
+#if DEBUG
+        // Endpoint solo para probar el middleware en desarrollo
+        [HttpGet("error-test")]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult LanzarError()
+        {
+            throw new Exception("🔥 Esto es una excepción de prueba");
+        }
+#endif
 
         [HttpGet]
-        public async Task<ActionResult<List<Caso>>> ObtenerCasos()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ObtenerCasos([FromQuery] FiltroCasosRequest filtro)
         {
-            var casos = await _listarCasosService.EjecutarAsync();
-            return Ok(casos);
+            var resultado = await _listarCasosService.EjecutarAsync(filtro);
+            return Ok(resultado);
         }
 
-        // POST /api/casos
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CrearCaso([FromBody] CrearCasoRequest request)
         {
-            if (string.IsNullOrWhiteSpace(request.Titulo) || string.IsNullOrWhiteSpace(request.NombreCliente))
-                return BadRequest("El título y el nombre del cliente son obligatorios.");
-            //validaciones de entrada del cliente antes de pasar 
-            if (string.IsNullOrWhiteSpace(request.Descripcion) || (request.Descripcion.Length < 10))
-                return BadRequest("La descripción debe tener al menos 10 caracteres.");
             var resultado = await _crearCasoService.EjecutarAsync(request);
             return StatusCode(201);
-
         }
-        // PUT /api/casos/{id}/cerrar
+
         [HttpPut("{id}/cerrar")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> CerrarCaso(int id)
         {
-            try
-            {
-                var resultado = await _cerrarCasosService.EjecutarAsync(id);
+            var resultado = await _cerrarCasosService.EjecutarAsync(id);
 
-                if (resultado != "caso cerrado correctamente");
-                return BadRequest();
-            }
-            catch (InvalidOperationException ex)
-            {
-                return NotFound(ex.Message); // "El caso no existe."    
-            }
+            if (resultado != "caso cerrado correctamente")
+                return BadRequest(resultado);
+
+            return Ok(resultado);
         }
 
-
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> ActualizarCaso(int id, [FromBody] ActualizarCasoRequest request)
         {
-            try
-            {
-                var resultado = await _actualizarCasoService.EjecutarAsync(id, request);
+            var resultado = await _actualizarCasoService.EjecutarAsync(id, request);
 
-                if (resultado == "El caso no existe.")
-                    return NotFound(resultado);
+            if (resultado == "El caso no existe.")
+                return NotFound(resultado);
 
-                if (resultado == "No se puede editar un caso cerrado.")
-                    return BadRequest(resultado);
+            if (resultado == "No se puede editar un caso cerrado.")
+                return BadRequest(resultado);
 
-                return Ok(resultado);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Error al actualizar el caso: {ex.Message}");
-            }
+            return Ok(resultado);
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Eliminar(int id)
         {
-            try
-            {
-                await _eliminarCasoService.EjecutarAsync(id);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return NotFound(new { mensaje = ex.Message });
-            }
+            await _eliminarCasoService.EjecutarAsync(id);
+            return NoContent();
         }
+
         [HttpGet("conteo-casos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<List<ConteoPorClienteDto>>> ObtenerConteoCasosPorCliente()
         {
             var resultado = await _casoRepository.ObtenerConteoCasosPorClienteAsync();
             return Ok(resultado);
         }
-
     }
 }

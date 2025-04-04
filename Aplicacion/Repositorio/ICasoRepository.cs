@@ -17,6 +17,7 @@ using System.Threading.Tasks;
             Task<Caso?> ObtenerPorId(int id);
             Task EliminarAsync(Caso caso);
         Task<List<ConteoPorClienteDto>> ObtenerConteoCasosPorClienteAsync();
+        IQueryable<Caso> ObtenerQueryable();
 
 
 
