@@ -10,7 +10,22 @@ namespace Dominio.Entidades
     {
         public int Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
+        public string Rut { get; set; } = string.Empty;
+
         public ICollection<Caso> Casos { get; set; } = new List<Caso>();
+
+
+
+        public Cliente(string rut, string nombre)
+        {
+            Rut = rut;
+            Nombre = nombre;
+        }
+        // ✅ Constructor vacío requerido por EF Core
+
+        public Cliente() { }
+
+
     }
 
 }

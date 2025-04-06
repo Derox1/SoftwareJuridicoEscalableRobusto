@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
   </PropertyGroup>
 
   <ItemGroup>
