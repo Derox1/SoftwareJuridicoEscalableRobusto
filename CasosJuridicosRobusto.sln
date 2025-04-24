@@ -19,6 +19,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasosJuridicosRobusto.Tests", "CasosJuridicosRobusto.Tests\CasosJuridicosRobusto.Tests.csproj", "{3959E9D9-61C5-4FED-B70E-108F9DD590D0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{689C36A4-E2A1-427E-9265-E3D4EAC325C9}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+		Script.js = Script.js
+		styles.css = styles.css
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

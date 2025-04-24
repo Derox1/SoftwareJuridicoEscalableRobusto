@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,19 @@ namespace Aplicacion.DTOs
 {
     public class FiltroCasosRequest
     {
+        [SwaggerSchema("Número de página que deseas ver", Nullable = false)]
         public int Pagina { get; set; } = 1;
+
+        [SwaggerSchema("Cantidad de elementos por página", Nullable = false)]
         public int Tamanio { get; set; } = 10;
-        public string? Estado { get; set; }       // "Abierto", "Cerrado", etc.
-        public string? Buscar { get; set; }       // Título, cliente, etc.
-        public string? Orden { get; set; }        // "fecha_desc", "titulo_asc", etc.
+
+        [SwaggerSchema("Filtrar por estado: 'Pendiente' o 'Cerrado'")]
+        public string? Estado { get; set; }
+
+        [SwaggerSchema("Buscar por título o nombre del cliente")]
+        public string? Buscar { get; set; }
+
+        [SwaggerSchema("Orden: 'fecha_desc', 'fecha_asc', 'titulo_asc', 'titulo_desc'")]
+        public string? Orden { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Aplicacion.DTOs;
 using Aplicacion.Repositorio;
+using Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aplicacion.Servicios.Casos
@@ -16,9 +17,11 @@ namespace Aplicacion.Servicios.Casos
             var query = _casoRepository.ObtenerQueryable();
 
             // Filtro por estado
-            if (!string.IsNullOrWhiteSpace(filtro.Estado))
+            if (!string.IsNullOrWhiteSpace(filtro.Estado) && Enum.TryParse<EstadoCaso>(filtro.Estado, true, out var estadoEnum))
             {
-                query = query.Where(c => c.Estado == filtro.Estado);
+                query = query.Where(c => c.Estado == estadoEnum);
+
+
             }
 
             // Búsqueda por texto libre
@@ -54,7 +57,8 @@ namespace Aplicacion.Servicios.Casos
                     Titulo = c.Titulo,
                     Estado = c.Estado,
                     FechaCreacion = c.FechaCreacion,
-                    NombreCliente = c.Cliente.Nombre
+                    NombreCliente = c.Cliente.Nombre,
+                    TipoCaso = c.TipoCaso
                 })
                 .ToListAsync();
 

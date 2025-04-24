@@ -12,15 +12,15 @@ namespace Dominio.Entidades
         public string Titulo { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
         public string NombreCliente { get; set; } = string.Empty;
-        public string TipoCaso { get; set; } = string.Empty;
+        public TipoCaso TipoCaso { get; set; } 
         public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
-        public string Estado { get; set; } = "Pendiente"; // "Pendiente", "En Proceso", "Cerrado"
+        public EstadoCaso Estado { get; set; } = EstadoCaso.Pendiente;
         public Cliente Cliente { get; set; } = null!;  // navegación
         public int ClienteId { get; set; }
 
         // Validación de estados
-        public bool PuedeSerCerrado() => Estado == "En Proceso";
-        public bool EstaActivo() => Estado != "Cerrado";
-        public bool EstaCerrado() => Estado == "En Proceso";
+        public bool PuedeSerCerrado() => Estado == EstadoCaso.EnProceso;
+        public bool EstaActivo() => Estado != EstadoCaso.Cerrado;
+        public bool EstaCerrado() => Estado == EstadoCaso.Cerrado;
     }
 }

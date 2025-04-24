@@ -3,44 +3,17 @@
 *.user
 *.suo
 
-# Build results
+# Archivos de build
 bin/
 obj/
 out/
-TestResults/
 
-# NuGet
-*.nupkg
-# NPM / Node (si usás Angular)
-node_modules/
-package-lock.json
-
-# Logs / DB / temporales
-*.log
-*.vsidx
-*.db
-*.sqlite
-
-# Config locales que no deberían ir al repo
+# Configs locales
 appsettings.Development.json
-appsettings.Local.json
-.env
-*.secret.json
 
-# Docker
-**/Dockerfile
-**/docker-compose*.yml
-
-# Git personal files
-*.orig
-*.rej
-*.swn
-*.swp
-
-# IDEs
+# Otros
+*.log
+*.tmp
 .idea/
-.vscode/
-
-# Others
+.DS_Store
 Thumbs.db
-desktop.ini

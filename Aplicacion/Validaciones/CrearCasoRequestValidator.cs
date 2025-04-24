@@ -20,6 +20,10 @@ namespace Aplicacion.Validaciones
 
             RuleFor(x => x.NombreCliente)
                 .NotEmpty().WithMessage("El nombre del cliente es obligatorio.");
+
+            RuleFor(x => x.TipoCaso)
+                          .IsInEnum()
+                          .WithMessage("Tipo de caso no válido.");
         }
     }
 }

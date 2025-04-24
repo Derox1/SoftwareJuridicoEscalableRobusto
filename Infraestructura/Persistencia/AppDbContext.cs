@@ -20,13 +20,18 @@ namespace Infraestructura.Persistencia
         //este codigo es para
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder); 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-            //modelBuilder.Entity<Caso>();
-            //.HasOne(c => c.Cliente)
-            //.WithMany(cl => cl.Casos)
-            //.HasForeignKey(c => c.ClienteId)
-            // .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Caso>()   // 1º Bloque: Relaciones
+            .HasOne(c => c.Cliente)
+            .WithMany(cl => cl.Casos)
+            .HasForeignKey(c => c.ClienteId)
+             .OnDelete(DeleteBehavior.Restrict);
+
+            //separados siempre 
+             modelBuilder.Entity<Caso>() // 2º Bloque: Configuración de propiedades
+             .Property(c => c.Estado)
+             .HasConversion<string>();
         }
     }
 }

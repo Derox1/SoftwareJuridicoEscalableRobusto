@@ -22,12 +22,11 @@ namespace Aplicacion.Servicios.Casos
             if (caso is null)
                 return "El caso no existe.";
 
-            if (caso.Estado == "Cerrado")
+            if (caso.Estado == EstadoCaso.Cerrado)
                 return "No se puede editar un caso cerrado.";
 
             caso.Titulo = request.Titulo;
             caso.Descripcion = request.Descripcion;
-            caso.NombreCliente = _formateador.Formatear(request.NombreCliente);
 
             await _casoRepository.ActualizarAsync(caso);
 

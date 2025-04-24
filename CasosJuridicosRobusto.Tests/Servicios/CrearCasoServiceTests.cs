@@ -74,7 +74,7 @@ namespace CasosJuridicosRobusto.Tests.Servicios
             var casoExistente = new Caso
             {
                 NombreCliente = "Ana Torres",
-                Estado = "Pendiente"
+                Estado = EstadoCaso.Pendiente
             };
 
             _mockCasoRepository.Setup(r => r.ObtenerTodosAsync())
@@ -111,6 +111,29 @@ namespace CasosJuridicosRobusto.Tests.Servicios
             resultado.Should().Be("Caso creado exitosamente.");
             _mockClienteRepository.Verify(r => r.CrearAsync(It.Is<Cliente>(c => c.Nombre == "PEDRO GÓMEZ")), Times.Once);
             _mockCasoRepository.Verify(r => r.CrearAsync(It.IsAny<Caso>()), Times.Once);
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("   ")]
+        public async Task EjecutarAsync_TituloInvalido_DeberiaLanzarArgumentException(string tituloInvalido)
+        {
+            // Arrange
+            var request = new CrearCasoRequest
+            {
+                Titulo = tituloInvalido,
+                Descripcion = "Cualquier descripción",
+                NombreCliente = "Cliente Válido"
+            };
+
+            // Act
+            Func<Task> act = async () => await _service.EjecutarAsync(request);
+
+            // Assert
+            await act.Should()
+                .ThrowAsync<ArgumentException>()
+                .WithMessage("El título del caso es obligatorio.");
         }
 
 

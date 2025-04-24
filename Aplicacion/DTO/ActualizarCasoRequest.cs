@@ -11,6 +11,6 @@ namespace Aplicacion.DTOs
     {
         public string Titulo { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
-        public string NombreCliente { get; set; } = string.Empty;
+        public TipoCaso TipoCaso { get; set; }
     }
 }
