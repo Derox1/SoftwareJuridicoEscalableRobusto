@@ -83,7 +83,7 @@ namespace Aplicacion.Casos
                     Descripcion = request.Descripcion,
                     NombreCliente = nombreFormateado,
                     TipoCaso = request.TipoCaso,
-                    FechaCreacion = DateTime.UtcNow,
+                    FechaCreacion = DateTimeOffset.UtcNow,
                     Estado = EstadoCaso.Pendiente,
                     ClienteId = cliente.Id
                 };

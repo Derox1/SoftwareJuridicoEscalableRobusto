@@ -127,16 +127,15 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> CerrarCaso(int id)
+        public async Task<IActionResult> CerrarCaso(int id, [FromBody] CerrarCasoRequest request)
         {
-            var resultado = await _cerrarCasosService.EjecutarAsync(id);
+            var resultado = await _cerrarCasosService.EjecutarAsync(id, request);
 
             if (resultado.NoEncontrado)
                 return NotFound(ApiError.NotFound(resultado.Mensaje!, HttpContext));
 
             if (!resultado.Exito && resultado.EsErrorNegocio)
                 return BadRequest(ApiError.BadRequest(resultado.Mensaje!, HttpContext));
-
 
             return Ok(resultado);
         }
@@ -222,5 +221,29 @@ namespace API.Controllers
             var resultado = await _casoRepository.ObtenerConteoCasosPorClienteAsync();
             return Ok(resultado);
         }
+
+
+        [Authorize]
+        [HttpGet("estado/{estado}")]
+        public async Task<IActionResult> GetPorEstado(string estado)
+        {
+            if(!Enum.TryParse<EstadoCaso>(estado, true, out var estadoEnum))
+            {
+                return BadRequest("Estado invalido.");
+            }
+
+            var lista = await _casoRepository.ObtenerPorEstadoAsync(estadoEnum);
+
+            return Ok(lista.Select(c => new CasoDto
+            {
+                Id = c.Id,
+                Titulo = c.Titulo,
+                Estado = c.Estado,
+                TipoCaso =c.TipoCaso,
+                FechaCreacion = c.FechaCreacion,
+                NombreCliente = c.NombreCliente
+            }));
+               
+            }
+        }
     }
-}

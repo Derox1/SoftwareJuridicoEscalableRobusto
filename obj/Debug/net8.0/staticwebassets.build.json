@@ -1,0 +1,1052 @@
+{
+  "Version": 1,
+  "Hash": "pbm4mnkDyklPFogIp0sEKowK5L2yE7jL6Rc/+nESjeA=",
+  "Source": "API",
+  "BasePath": "_content/API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "API\\wwwroot",
+      "Source": "API",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\.gitignore",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "#[.{fingerprint}]?.gitignore",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2c06sczbz7",
+      "Integrity": "MoOMXUtXL7h0oBUs7yHd+tOM4ybh1DaHPozBsdrbFzI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\.gitignore"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\dashboard.css",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "css/dashboard#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qhl8so2s4w",
+      "Integrity": "zjpUAPn50P9V84xwZAMFLqcvo3D4RgBaqnK61AWmdHA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\dashboard.css"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\login.css",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "css/login#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "od8nuhw0fn",
+      "Integrity": "LEzjY/H1Xotc8be+iAPYjom8L9UBB8P6RC4MJyjD1e4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\dashboard.html",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "dashboard#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mcm1oqgd4c",
+      "Integrity": "mtiEAr2QkoDRwyle+OVQupY8s3bdbSMtbrJ0ZxX7VD4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dashboard.html"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\img\\fondo-legal.jpg",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "img/fondo-legal#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4n27dcd0b0",
+      "Integrity": "4EnP/+310iawU0Ko0XG83sU72bSjGaK+ZZEC8IUa75I=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\fondo-legal.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\img\\scales.svg",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "img/scales#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "strk0i5uh7",
+      "Integrity": "4CFCWegLv+0W8xwckonZnsvNK7f0IImVpJK/o7/7vSA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\scales.svg"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "js/dashboard#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "pklmc9xv90",
+      "Integrity": "uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\dashboard.js"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\login.js",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "js/login#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "exuoq4wpqw",
+      "Integrity": "biPZAUL8SO3yqzcoVqKj9gcJPT1SC78GM+xYSEMGEic=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\login.js"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\login.html",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "login#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "k0llmdhz8u",
+      "Integrity": "pFewi64GkPRuXdMbGXYenHiNdunFcgBnfjsj07Ud9oU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\login.html"
+    },
+    {
+      "Identity": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\videos\\fondo-legal.mp4",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "videos/fondo-legal#[.{fingerprint}]?.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "euo2enm0wj",
+      "Integrity": "RtTUIkwSgcsCr1Vgu3pD7DMx8PT0wMoSQWAL9B/wzf0=",
+      "CopyToOutputDirectory": "Always",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\videos\\fondo-legal.mp4"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": ".2c06sczbz7.gitignore",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\.gitignore",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1234"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MoOMXUtXL7h0oBUs7yHd+tOM4ybh1DaHPozBsdrbFzI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 15:31:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2c06sczbz7"
+        },
+        {
+          "Name": "label",
+          "Value": ".gitignore"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MoOMXUtXL7h0oBUs7yHd+tOM4ybh1DaHPozBsdrbFzI="
+        }
+      ]
+    },
+    {
+      "Route": ".gitignore",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\.gitignore",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1234"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MoOMXUtXL7h0oBUs7yHd+tOM4ybh1DaHPozBsdrbFzI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 15:31:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MoOMXUtXL7h0oBUs7yHd+tOM4ybh1DaHPozBsdrbFzI="
+        }
+      ]
+    },
+    {
+      "Route": "css/dashboard.css",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\dashboard.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10419"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zjpUAPn50P9V84xwZAMFLqcvo3D4RgBaqnK61AWmdHA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 13:22:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zjpUAPn50P9V84xwZAMFLqcvo3D4RgBaqnK61AWmdHA="
+        }
+      ]
+    },
+    {
+      "Route": "css/dashboard.qhl8so2s4w.css",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\dashboard.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10419"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zjpUAPn50P9V84xwZAMFLqcvo3D4RgBaqnK61AWmdHA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 13:22:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qhl8so2s4w"
+        },
+        {
+          "Name": "label",
+          "Value": "css/dashboard.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zjpUAPn50P9V84xwZAMFLqcvo3D4RgBaqnK61AWmdHA="
+        }
+      ]
+    },
+    {
+      "Route": "css/login.css",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\login.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4719"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LEzjY/H1Xotc8be+iAPYjom8L9UBB8P6RC4MJyjD1e4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 01 May 2025 11:14:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LEzjY/H1Xotc8be+iAPYjom8L9UBB8P6RC4MJyjD1e4="
+        }
+      ]
+    },
+    {
+      "Route": "css/login.od8nuhw0fn.css",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\login.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4719"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LEzjY/H1Xotc8be+iAPYjom8L9UBB8P6RC4MJyjD1e4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 01 May 2025 11:14:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "od8nuhw0fn"
+        },
+        {
+          "Name": "label",
+          "Value": "css/login.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LEzjY/H1Xotc8be+iAPYjom8L9UBB8P6RC4MJyjD1e4="
+        }
+      ]
+    },
+    {
+      "Route": "dashboard.html",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\dashboard.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4664"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mtiEAr2QkoDRwyle+OVQupY8s3bdbSMtbrJ0ZxX7VD4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 09:40:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mtiEAr2QkoDRwyle+OVQupY8s3bdbSMtbrJ0ZxX7VD4="
+        }
+      ]
+    },
+    {
+      "Route": "dashboard.mcm1oqgd4c.html",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\dashboard.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4664"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mtiEAr2QkoDRwyle+OVQupY8s3bdbSMtbrJ0ZxX7VD4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 09:40:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mcm1oqgd4c"
+        },
+        {
+          "Name": "label",
+          "Value": "dashboard.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mtiEAr2QkoDRwyle+OVQupY8s3bdbSMtbrJ0ZxX7VD4="
+        }
+      ]
+    },
+    {
+      "Route": "img/fondo-legal.4n27dcd0b0.jpg",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\img\\fondo-legal.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1193134"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4EnP/+310iawU0Ko0XG83sU72bSjGaK+ZZEC8IUa75I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 01 May 2025 12:23:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4n27dcd0b0"
+        },
+        {
+          "Name": "label",
+          "Value": "img/fondo-legal.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4EnP/+310iawU0Ko0XG83sU72bSjGaK+ZZEC8IUa75I="
+        }
+      ]
+    },
+    {
+      "Route": "img/fondo-legal.jpg",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\img\\fondo-legal.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1193134"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4EnP/+310iawU0Ko0XG83sU72bSjGaK+ZZEC8IUa75I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 01 May 2025 12:23:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4EnP/+310iawU0Ko0XG83sU72bSjGaK+ZZEC8IUa75I="
+        }
+      ]
+    },
+    {
+      "Route": "img/scales.strk0i5uh7.svg",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\img\\scales.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3069"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4CFCWegLv+0W8xwckonZnsvNK7f0IImVpJK/o7/7vSA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 08:22:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "strk0i5uh7"
+        },
+        {
+          "Name": "label",
+          "Value": "img/scales.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4CFCWegLv+0W8xwckonZnsvNK7f0IImVpJK/o7/7vSA="
+        }
+      ]
+    },
+    {
+      "Route": "img/scales.svg",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\img\\scales.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3069"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4CFCWegLv+0W8xwckonZnsvNK7f0IImVpJK/o7/7vSA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 08:22:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4CFCWegLv+0W8xwckonZnsvNK7f0IImVpJK/o7/7vSA="
+        }
+      ]
+    },
+    {
+      "Route": "js/dashboard.js",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6325"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 07:13:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo="
+        }
+      ]
+    },
+    {
+      "Route": "js/dashboard.pklmc9xv90.js",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6325"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 07:13:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pklmc9xv90"
+        },
+        {
+          "Name": "label",
+          "Value": "js/dashboard.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo="
+        }
+      ]
+    },
+    {
+      "Route": "js/login.exuoq4wpqw.js",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\login.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2474"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"biPZAUL8SO3yqzcoVqKj9gcJPT1SC78GM+xYSEMGEic=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 08:57:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "exuoq4wpqw"
+        },
+        {
+          "Name": "label",
+          "Value": "js/login.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-biPZAUL8SO3yqzcoVqKj9gcJPT1SC78GM+xYSEMGEic="
+        }
+      ]
+    },
+    {
+      "Route": "js/login.js",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\login.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2474"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"biPZAUL8SO3yqzcoVqKj9gcJPT1SC78GM+xYSEMGEic=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 08:57:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-biPZAUL8SO3yqzcoVqKj9gcJPT1SC78GM+xYSEMGEic="
+        }
+      ]
+    },
+    {
+      "Route": "login.html",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\login.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2322"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pFewi64GkPRuXdMbGXYenHiNdunFcgBnfjsj07Ud9oU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 07:06:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-pFewi64GkPRuXdMbGXYenHiNdunFcgBnfjsj07Ud9oU="
+        }
+      ]
+    },
+    {
+      "Route": "login.k0llmdhz8u.html",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\login.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2322"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pFewi64GkPRuXdMbGXYenHiNdunFcgBnfjsj07Ud9oU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 07:06:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k0llmdhz8u"
+        },
+        {
+          "Name": "label",
+          "Value": "login.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-pFewi64GkPRuXdMbGXYenHiNdunFcgBnfjsj07Ud9oU="
+        }
+      ]
+    },
+    {
+      "Route": "videos/fondo-legal.euo2enm0wj.mp4",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\videos\\fondo-legal.mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3077444"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RtTUIkwSgcsCr1Vgu3pD7DMx8PT0wMoSQWAL9B/wzf0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 05:43:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "euo2enm0wj"
+        },
+        {
+          "Name": "label",
+          "Value": "videos/fondo-legal.mp4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RtTUIkwSgcsCr1Vgu3pD7DMx8PT0wMoSQWAL9B/wzf0="
+        }
+      ]
+    },
+    {
+      "Route": "videos/fondo-legal.mp4",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\videos\\fondo-legal.mp4",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3077444"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/mp4"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RtTUIkwSgcsCr1Vgu3pD7DMx8PT0wMoSQWAL9B/wzf0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 05:43:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RtTUIkwSgcsCr1Vgu3pD7DMx8PT0wMoSQWAL9B/wzf0="
+        }
+      ]
+    }
+  ]
+}

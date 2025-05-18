@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\.gitignore",
+      "PackagePath": "staticwebassets\\.gitignore"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\dashboard.css",
+      "PackagePath": "staticwebassets\\css\\dashboard.css"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\dashboard.html",
+      "PackagePath": "staticwebassets\\dashboard.html"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\img\\fondo-legal.jpg",
+      "PackagePath": "staticwebassets\\img\\fondo-legal.jpg"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\img\\scales.svg",
+      "PackagePath": "staticwebassets\\img\\scales.svg"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\js\\dashboard.js"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\login.js",
+      "PackagePath": "staticwebassets\\js\\login.js"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\login.html",
+      "PackagePath": "staticwebassets\\login.html"
+    },
+    {
+      "Id": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\videos\\fondo-legal.mp4",
+      "PackagePath": "staticwebassets\\videos\\fondo-legal.mp4"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.API.props",
+      "PackagePath": "build\\API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.API.props",
+      "PackagePath": "buildMultiTargeting\\API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.API.props",
+      "PackagePath": "buildTransitive\\API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

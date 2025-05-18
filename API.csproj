@@ -77,13 +77,23 @@
 
   <ItemGroup>
     <None Include="wwwroot\.gitignore" />
-    <None Include="wwwroot\index.html" />
-    <None Include="wwwroot\Script.js" />
-    <None Include="wwwroot\styles.css" />
+    <None Include="wwwroot\css\dashboard.css" />
+    <None Include="wwwroot\css\login.css" />
+    <None Include="wwwroot\dashboard.html" />
+    <None Include="wwwroot\img\fondo-legal.jpg" />
+    <None Include="wwwroot\img\scales.svg" />
+    <None Include="wwwroot\js\login.js" />
+    <None Include="wwwroot\login.html" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="Infraestructura\Infraestructura.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\videos\fondo-legal.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -68,6 +68,11 @@ namespace Infraestructura.Repositorios
                 .AsNoTracking(); // Mejora rendimiento para lectura
         }
 
-
+        public async Task<List<Caso>> ObtenerPorEstadoAsync(EstadoCaso estado)
+        {
+            return await _context.Casos
+                .Where(c => c.Estado == estado)
+                .ToListAsync();
+        }
     }
 }

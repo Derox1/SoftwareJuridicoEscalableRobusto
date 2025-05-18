@@ -16,11 +16,9 @@ using System.Threading.Tasks;
             Task ActualizarAsync(Caso caso);
             Task<Caso?> ObtenerPorId(int id);
             Task EliminarAsync(Caso caso);
-        Task<List<ConteoPorClienteDto>> ObtenerConteoCasosPorClienteAsync();
-        IQueryable<Caso> ObtenerQueryable();
-
-
-
+            Task<List<ConteoPorClienteDto>> ObtenerConteoCasosPorClienteAsync();
+            IQueryable<Caso> ObtenerQueryable();
+            Task<List<Caso>> ObtenerPorEstadoAsync(EstadoCaso estado);
     }
 }
 

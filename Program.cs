@@ -13,14 +13,15 @@ using System.Text;
 using System;
 using Aplicacion.Servicios.Auth;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 
 
 
 //Configuración de Servicios (DI)
 var builder = WebApplication.CreateBuilder(args);
+
+//aqui permitimos 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 
 //Conexion a la base de datos 
@@ -93,7 +94,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // Cambia esto si usás otro frontend
+        policy.WithOrigins("https://localhost:7266") 
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -143,10 +144,11 @@ app.UseSwaggerUI(c =>
 });
 app.UseHttpsRedirection();
 app.UseMiddleware<ErrorHandlerMiddleware>();
-
+app.UseDefaultFiles();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseCors("PermitirFrontend"); // ESTO ACTIVA CORS
 app.UseAuthentication(); // JWT primero
 app.UseAuthorization();
 app.MapControllers();

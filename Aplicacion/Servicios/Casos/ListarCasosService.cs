@@ -1,4 +1,5 @@
-﻿using Aplicacion.DTOs;
+﻿using Aplicacion.DTO;
+using Aplicacion.DTOs;
 using Aplicacion.Repositorio;
 using Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ namespace Aplicacion.Servicios.Casos
         {
             _casoRepository = casoRepository;
         }
-        public async Task<ResultadoPaginado<CasoDto>> EjecutarAsync(FiltroCasosRequest filtro)
+        public async Task<ResultadoPaginadoConResumen<CasoDto>> EjecutarAsync(FiltroCasosRequest filtro)
         {
             var query = _casoRepository.ObtenerQueryable();
 
@@ -61,13 +62,19 @@ namespace Aplicacion.Servicios.Casos
                     TipoCaso = c.TipoCaso
                 })
                 .ToListAsync();
-
-            return new ResultadoPaginado<CasoDto>
+            var resumen = new ResumenCasosDto
+            {
+                Total = total,
+                Pendientes = await query.CountAsync(c => c.Estado == EstadoCaso.Pendiente),
+                Resueltos = await query.CountAsync(c => c.Estado == EstadoCaso.Cerrado || c.Estado == EstadoCaso.Cerrado)
+            };
+            return new ResultadoPaginadoConResumen<CasoDto>
             {
                 Items = items,
                 TotalRegistros = total,
                 Pagina = filtro.Pagina,
-                Tamanio = filtro.Tamanio
+                Tamanio = filtro.Tamanio,
+                Resumen = resumen
             };
         }
 

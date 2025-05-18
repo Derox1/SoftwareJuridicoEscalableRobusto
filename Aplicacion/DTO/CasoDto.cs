@@ -13,7 +13,7 @@ namespace Aplicacion.DTOs
         public int Id { get; set; }
         public string Titulo { get; set; } = string.Empty;
         public EstadoCaso Estado { get; set; } = EstadoCaso.Pendiente;
-        public DateTime FechaCreacion { get; set; }
+        public DateTimeOffset FechaCreacion { get; set; }
         public string NombreCliente { get; set; } = string.Empty;
         public TipoCaso TipoCaso { get; set; }  // ¡Agrega este campo!
 

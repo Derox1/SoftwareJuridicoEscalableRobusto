@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace Aplicacion.DTOs
         public string Titulo { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
         public TipoCaso TipoCaso { get; set; }
+        //public EstadoCaso Estado { get; set; } // 👈 Agregado para mejora 
+
     }
 }

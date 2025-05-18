@@ -1,46 +1,78 @@
-# Visual Studio
+# -------------------------------
+# VISUAL STUDIO / .NET BUILD
+# -------------------------------
+
 .vs/
 *.user
 *.suo
+*.sln.docstates
 
-# Build results
 bin/
 obj/
 out/
 TestResults/
+Generated_Code/
 
-# NuGet
+# -------------------------------
+# NUGET / PAQUETES / NODE
+# -------------------------------
+
 *.nupkg
-# NPM / Node (si usás Angular)
+*.snupkg
+packages/
 node_modules/
 package-lock.json
 
-# Logs / DB / temporales
+# -------------------------------
+# LOGS / BDs / TEMPORALES
+# -------------------------------
+
 *.log
 *.vsidx
 *.db
 *.sqlite
+*.bak
+*.tmp
 
-# Config locales que no deberían ir al repo
+# -------------------------------
+# CONFIG SENSIBLE (NO SUBIR)
+# -------------------------------
+
+appsettings.json
 appsettings.Development.json
 appsettings.Local.json
+appsettings.*.json
 .env
 *.secret.json
 
-# Docker
+# -------------------------------
+# DOCKER
+# -------------------------------
+
 **/Dockerfile
 **/docker-compose*.yml
 
-# Git personal files
+# -------------------------------
+# GIT / IDE / OTROS
+# -------------------------------
+
 *.orig
 *.rej
 *.swn
 *.swp
-
-# IDEs
 .idea/
 .vscode/
 
-# Others
+# -------------------------------
+# WINDOWS / OTROS
+# -------------------------------
+
 Thumbs.db
 desktop.ini
+ehthumbs.db
+
+# -------------------------------
+# ARCHIVOS EXTRAS PARA FRONTEND
+# -------------------------------
+
+wwwroot/lib/

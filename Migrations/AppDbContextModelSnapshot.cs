@@ -41,8 +41,17 @@ namespace API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("FechaCreacion")
+                    b.Property<DateTime?>("FechaCambioEstado")
                         .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaCierre")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTimeOffset>("FechaCreacion")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("MotivoCierre")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NombreCliente")
                         .IsRequired()

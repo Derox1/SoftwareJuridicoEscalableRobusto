@@ -23,5 +23,11 @@ namespace Aplicacion.DTOs
 
         [SwaggerSchema("Orden: 'fecha_desc', 'fecha_asc', 'titulo_asc', 'titulo_desc'")]
         public string? Orden { get; set; }
+
+        [SwaggerSchema("Fecha desde (YYYY-MM-DD)")]
+        public DateTime? Desde { get; set; }
+
+        [SwaggerSchema("Fecha hasta (YYYY-MM-DD)")]
+        public DateTime? Hasta { get; set; }
     }
 }
