@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pbm4mnkDyklPFogIp0sEKowK5L2yE7jL6Rc/+nESjeA=",
+  "Hash": "aGVl/lB95BLfhVj4nzZyY6ZMrWEFroo/cpkvvuUvKo0=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -157,8 +157,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "pklmc9xv90",
-      "Integrity": "uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo=",
+      "Fingerprint": "77ntmmkaj8",
+      "Integrity": "s8ghK251Xepd/nTXyq1VpoAfqZVw8b+4AHUaHDm2MrM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\dashboard.js"
@@ -721,6 +721,51 @@
       ]
     },
     {
+      "Route": "js/dashboard.77ntmmkaj8.js",
+      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6292"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s8ghK251Xepd/nTXyq1VpoAfqZVw8b+4AHUaHDm2MrM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 18:57:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "77ntmmkaj8"
+        },
+        {
+          "Name": "label",
+          "Value": "js/dashboard.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-s8ghK251Xepd/nTXyq1VpoAfqZVw8b+4AHUaHDm2MrM="
+        }
+      ]
+    },
+    {
       "Route": "js/dashboard.js",
       "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
       "Selectors": [],
@@ -731,7 +776,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6325"
+          "Value": "6292"
         },
         {
           "Name": "Content-Type",
@@ -739,11 +784,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo=\""
+          "Value": "\"s8ghK251Xepd/nTXyq1VpoAfqZVw8b+4AHUaHDm2MrM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 18 May 2025 07:13:25 GMT"
+          "Value": "Sun, 18 May 2025 18:57:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -753,52 +798,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo="
-        }
-      ]
-    },
-    {
-      "Route": "js/dashboard.pklmc9xv90.js",
-      "AssetFile": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6325"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 18 May 2025 07:13:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "pklmc9xv90"
-        },
-        {
-          "Name": "label",
-          "Value": "js/dashboard.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-uTaXX+gda5kYhRIuKtiK4bCWYk2Vg2qXCMx38wV5OOo="
+          "Value": "sha256-s8ghK251Xepd/nTXyq1VpoAfqZVw8b+4AHUaHDm2MrM="
         }
       ]
     },
