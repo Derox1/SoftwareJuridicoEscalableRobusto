@@ -132,11 +132,11 @@
     function getEstadoBadge(estado) {
         switch (estado.toLowerCase()) {
             case "pendiente":
-                return '<span class="badge bg-warning text-dark badge-estado">Pendiente</span>';
-            case "resuelto":
-                return '<span class="badge bg-success badge-estado">Resuelto</span>';
-            case "rechazado":
-                return '<span class="badge bg-danger badge-estado">Rechazado</span>';
+                return '<span class="badge estado-pendiente">Pendiente</span>';
+            case "enproceso":
+                return '<span class="badge estado-enproceso">En Proceso</span>';
+            case "cerrado":
+                return '<span class="badge estado-cerrado">Cerrado</span>';
             default:
                 return '<span class="badge bg-secondary badge-estado">' + estado + '</span>';
         }

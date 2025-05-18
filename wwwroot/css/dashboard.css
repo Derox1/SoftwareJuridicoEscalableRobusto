@@ -99,6 +99,23 @@ body {
 .badge-estado {
     animation: pulse 2.5s ease-in-out infinite;
 }
+.estado-pendiente {
+    background-color: #ffc107; /* amarillo */
+    color: #212529;
+    font-weight: 500;
+}
+
+.estado-enproceso {
+    background-color: #0dcaf0; /* celeste */
+    color: #fff;
+    font-weight: 500;
+}
+
+.estado-cerrado {
+    background-color: #dc3545; /* rojo */
+    color: #fff;
+    font-weight: 500;
+}
 
 /* =========================
    ANIMACIONES GENÉRICAS
