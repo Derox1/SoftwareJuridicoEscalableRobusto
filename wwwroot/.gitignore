@@ -76,3 +76,21 @@ ehthumbs.db
 # -------------------------------
 
 wwwroot/lib/
+
+# -------------------------------
+# VISUAL STUDIO / .NET BUILD
+# -------------------------------
+
+## VS Config y metadata
+.vs/
+*.user
+*.suo
+*.vsidx
+*.sln.docstates
+
+## Build outputs
+bin/
+obj/
+out/
+TestResults/
+Generated_Code/
