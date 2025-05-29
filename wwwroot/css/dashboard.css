@@ -231,12 +231,28 @@ table {
     scrollbar-width: thin;
     overflow-y: visible; /* ⬅️ importante: permite que el hover no corte sombra */
 }
+/* DATOS: salto de línea permitido */
+.table td {
+    white-space: normal;
+    word-break: break-word;
+}
 
-.table td, .table th {
+/* ENCABEZADOS: mantener en una línea */
+.table th {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+    /* Solo mantener nowrap en la columna de acciones */
+    .table td.text-nowrap {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .table td:nth-child(2) {
+        max-width: 280px;
+    }
 
 
 
