@@ -99,7 +99,8 @@ namespace API.Controllers
                 Estado = caso.Estado,
                 FechaCreacion = caso.FechaCreacion,
                 NombreCliente = caso.NombreCliente,
-                TipoCaso = caso.TipoCaso
+                TipoCaso = caso.TipoCaso,
+                Descripcion = caso.Descripcion
             };
 
             return Ok(dto);

@@ -16,6 +16,7 @@ namespace Aplicacion.DTOs
         public DateTimeOffset FechaCreacion { get; set; }
         public string NombreCliente { get; set; } = string.Empty;
         public TipoCaso TipoCaso { get; set; }  // ¡Agrega este campo!
+        public string Descripcion { get; set; } = string.Empty; // ✅ Este campo es el que falta
 
     }
 }
