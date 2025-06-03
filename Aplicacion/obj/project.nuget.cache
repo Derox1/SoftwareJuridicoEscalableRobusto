@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pX6bJcSNA/g=",
+  "dgSpecHash": "YZ1ha+0As5s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\Aplicacion\\Aplicacion.csproj",
+  "projectFilePath": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Aplicacion\\Aplicacion.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\basti\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\basti\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",

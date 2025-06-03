@@ -1,9 +1,28 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+﻿
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /*➡️ Espera que el DOM esté completamente cargado antes de ejecutar el código JS (buena práctica para manipular el DOM).
+    
+    */
+
     const apiUrl = "https://localhost:7266/api/Casos";
+    /*➡️ Define la URL base para la API de casos.
+    */
     const token = localStorage.getItem("jwt_token");
+
+    /*➡️ Recupera el token JWT desde localStorage (para autorizar las peticiones).
+*/
     const usuario = JSON.parse(localStorage.getItem("usuario_actual") || "{}");
 
+    /*➡️ Obtiene el usuario actual guardado (si existe).
+
+*/
+
     const saludo = document.getElementById("saludoUsuario");
+    /*➡️ Elemento donde mostrarás “Hola, Usuario”.
+    
+    */
     // Aplicamos Choise.Js
     const filtroEstado = document.getElementById("filtroEstado");
     const choicesEstado = new Choices(filtroEstado, {
@@ -36,6 +55,8 @@
         tamanio: 10
     };
 
+    /*➡️ Filtro inicial: sin estado aplicado, página 1, 10 resultados por página.*/
+
 
     if (!token) {
         alert("Token no encontrado. Redirigiendo al login...");
@@ -43,11 +64,21 @@
         return;
     }
 
+    /*if (!token) {
+    alert("Token no encontrado. Redirigiendo al login...");
+    window.location.href = "login.html";
+    return;*/
+
     if (saludo && usuario.nombre) {
         saludo.textContent = `Hola, ${usuario.nombre}`;
     }
 
+    /*➡️ Personaliza el saludo si el usuario tiene nombre guardado.*/
+
     cargarCasosDesdeBackend();
+
+    /**➡️ Ejecuta carga inicial. */
+
 
     filtroEstado.addEventListener("change", () => {
         const estadoSeleccionado = filtroEstado.value?.trim();
@@ -55,6 +86,9 @@
         filtros.pagina = 1;
         cargarCasosDesdeBackend();
     });
+
+    /**➡️ Actualiza el filtro de estado y recarga la tabla */
+
 
     function construirQueryString(filtros) {
         const params = new URLSearchParams();
@@ -64,6 +98,8 @@
         return "?" + params.toString();
     }
 
+    /**➡️ Transforma tu objeto filtros en un query string para el fetch. */
+
     async function cargarCasosDesdeBackend() {
         const query = construirQueryString(filtros);
 
@@ -72,6 +108,12 @@
                 'Authorization': `Bearer ${token}`
             }
         });
+
+        /**➡️ Consulta la API con token.
+➡️ Maneja errores y expiración de sesión.
+➡️ Valida estructura del response (items y resumen).
+➡️ Llama a funciones auxiliares: renderizarTabla, actualizarResumen, mostrarMensajeInformativo. */
+
 
         if (!response.ok) {
             if (response.status === 401) {
@@ -110,6 +152,8 @@
             const estadoBadge = getEstadoBadge(caso.estado);
             const tipoIcono = getTipoIcono(caso.tipoCaso);
             const claseFila = `tr-${caso.estado.toLowerCase()}`;
+            const puedeCerrar = caso.estado.toLowerCase() !== "cerrado";
+
 
             const row = `
             <tr class="${claseFila}">
@@ -126,11 +170,19 @@
                     <button class="btn btn-sm btn-outline-warning" title="Editar">
                         <i class="bi bi-pencil-fill"></i>
                     </button>
+                      <button class="btn btn-sm btn-outline-danger btn-eliminar" data-id="${caso.id}" title="Eliminar">
+                    <i class="bi bi-trash-fill"></i>
+                     </button>
                 </td>
             </tr>
         `;
             tbody.innerHTML += row;
         });
+
+        /**➡️ Limpia y vuelve a renderizar la tabla de casos con animación suave (opacity).
+➡️ Inserta HTML dinámico fila por fila */
+
+
 
         setTimeout(() => {
             tbody.classList.remove("opacity-0");
@@ -143,11 +195,20 @@
         document.getElementById("casosResueltos").textContent = resumen.resueltos;
     }
 
+    /**➡️ Muestra totales y contadores en la parte superior del dashboard.
+
+ */
+
     function mostrarMensajeInformativo(mostrados, total) {
         const estadoTabla = document.getElementById("contadorResultados");
         if (!estadoTabla) return;
         estadoTabla.textContent = `Mostrando ${mostrados} de ${total} casos`;
     }
+
+    /** ℹ️ Mensaje inferior: “Mostrando X de Y casos”*/
+
+
+
 
     function mostrarDetalleCaso(id) {
         fetch(`${apiUrl}/${id}`, {
@@ -176,6 +237,9 @@
             });
     }
 
+    /**➡️ Trae los datos de un caso por ID.
+➡️ Rellena un modal Bootstrap para mostrar info detallada */
+
     function getEstadoBadge(estado) {
         switch (estado.toLowerCase()) {
             case "pendiente":
@@ -189,6 +253,7 @@
         }
     }
 
+    /**➡️ Devuelven HTML para mostrar el estado y tipo con íconos y colores personalizados. */
     function getTipoIcono(tipo) {
         switch (tipo.toLowerCase()) {
             case "laboral":
@@ -209,12 +274,18 @@
         localStorage.removeItem("usuario_actual");
         window.location.href = "login.html";
     });
-    document.addEventListener("click", (e) => {
+    /**➡️ Limpia el token y usuario del almacenamiento, redirige al login. **/
+    document.addEventListener("click", async (e) => {
+        // 👁 Ver detalle
+
         if (e.target.closest(".btn-ver")) {
             const btn = e.target.closest(".btn-ver");
             const id = btn.dataset.id;
             mostrarDetalleCaso(id);
         }
+
+
+        // ✏️ Editar
         if (e.target.closest(".btn-outline-warning")) {
             const row = e.target.closest("tr");
             const id = row.children[0].textContent;
@@ -226,7 +297,7 @@
                 .then(data => {
                     document.getElementById("form-id").value = data.id;
                     document.getElementById("form-titulo").value = data.titulo;
-                    document.getElementById("form-cliente").value = data.nombreCliente; 
+                    document.getElementById("form-cliente").value = data.nombreCliente;
                     document.getElementById("form-cliente").readOnly = true; //  SOLO LECTURA
                     document.getElementById("grupo-cliente").style.display = "block"; //  Mostrar campo
                     document.getElementById("form-descripcion").value = data.descripcion;
@@ -241,11 +312,100 @@
                     modal.show();
                 });
         }
+        // 🗑️ Eliminar con SweetAlert (esto va *fuera* del bloque de editar)
+        if (e.target.closest(".btn-eliminar")) {
+            const btn = e.target.closest(".btn-eliminar");
+            const id = btn.dataset.id;
+
+            // 🔐 Validación local: no permitir eliminar si ya está cerrado
+            const fila = btn.closest("tr");
+            const estado = fila.children[2].innerText.trim().toLowerCase(); // Columna de estado
+
+            if (estado === "cerrado") {
+                Swal.fire({
+                    icon: "warning",
+                    title: "No se puede eliminar",
+                    text: "Este caso está cerrado y no puede ser eliminado.",
+                });
+                return; // ⚠️ No seguimos con el fetch
+            }
+
+
+            // ✅ Confirmación visual
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Esta acción eliminará el caso permanentemente.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    try {
+                        Swal.fire({
+                            title: 'Eliminando...',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        const res = await fetch(`${apiUrl}/${id}`, {
+                            method: "DELETE",
+                            headers: { "Authorization": `Bearer ${token}` }
+                        });
+
+                        if (!res.ok) {
+                            const mensajeError = await res.text();
+
+                            // ⚠️ Mostrar mensaje personalizado según tipo de error
+                            if (res.status === 400 || res.status === 404) {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'No se pudo eliminar',
+                                    text: mensajeError,
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error inesperado',
+                                    text: 'Ocurrió un problema al intentar eliminar el caso.',
+                                });
+                            }
+
+                            return; // detenemos el flujo
+                        }
+                        Swal.fire({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Caso eliminado exitosamente',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true
+                        });
+
+                        await cargarCasosDesdeBackend();
+                    } catch (error) {
+                        Swal.fire('Error', error.message, 'error');
+                    }
+                }
+            });
+        }
     });
+
+
+
+
+
+
 
 
     document.getElementById("btnNuevoCaso")?.addEventListener("click", () => {
         // Limpiar el formulario antes de abrir
+
         document.getElementById("formGestionCaso").reset();
         document.getElementById("form-id").value = ""; // dejar vacío para saber que es nuevo
         // 🆕 Limpiar campo cliente (solo visual)
@@ -274,7 +434,11 @@
 
         // Validación básica para evitar envío si el usuario no seleccionó valores
         if (!estado || !tipoCaso) {
-            alert("❗ Por favor selecciona un estado y un tipo de caso.");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Campos requeridos',
+                text: 'Por favor selecciona un estado y un tipo de caso.',
+            });
             return;
         }
 
@@ -304,13 +468,32 @@
             if (!response.ok) throw new Error(`Error al ${esNuevo ? "crear" : "actualizar"} el caso`);
 
             bootstrap.Modal.getInstance(document.getElementById("modalGestionCaso")).hide();
+
+
+            // ✅ Recarga la tabla
             await cargarCasosDesdeBackend();
 
-            alert(`✅ Caso ${esNuevo ? "creado" : "actualizado"} con éxito`);
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: `Caso ${esNuevo ? "creado" : "actualizado"} con éxito`,
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true
+            });
+
+
         } catch (error) {
             console.error(`Error al ${esNuevo ? "crear" : "actualizar"} el caso:`, error);
-            alert(`❌ No se pudo ${esNuevo ? "crear" : "actualizar"} el caso.`);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `❌ No se pudo ${esNuevo ? "crear" : "actualizar"} el caso.`,
+            });
         }
+
     });
 });
 
