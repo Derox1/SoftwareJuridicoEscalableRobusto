@@ -33,6 +33,10 @@ namespace API.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -50,6 +54,9 @@ namespace API.Migrations
                     b.Property<DateTimeOffset>("FechaCreacion")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MotivoCierre")
                         .HasColumnType("nvarchar(max)");
 
@@ -63,6 +70,9 @@ namespace API.Migrations
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 

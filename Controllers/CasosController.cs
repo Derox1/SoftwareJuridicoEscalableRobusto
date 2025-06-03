@@ -141,11 +141,6 @@ namespace API.Controllers
             return Ok(resultado);
         }
 
-
-
-
-
-
         [Authorize]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

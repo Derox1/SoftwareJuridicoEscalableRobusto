@@ -152,6 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const estadoBadge = getEstadoBadge(caso.estado);
             const tipoIcono = getTipoIcono(caso.tipoCaso);
             const claseFila = `tr-${caso.estado.toLowerCase()}`;
+
+            //validacion para mostrar mensaje de cerrar solo si no esta cerrado
             const puedeCerrar = caso.estado.toLowerCase() !== "cerrado";
 
 
@@ -173,6 +175,10 @@ document.addEventListener("DOMContentLoaded", () => {
                       <button class="btn btn-sm btn-outline-danger btn-eliminar" data-id="${caso.id}" title="Eliminar">
                     <i class="bi bi-trash-fill"></i>
                      </button>
+                      ${puedeCerrar ? `
+                     <button class="btn btn-sm btn-outline-secondary btn-cerrar" data-id="${caso.id}" title="Cerrar">
+                       <i class="bi bi-lock-fill"></i>
+                     </button>` : ""}
                 </td>
             </tr>
         `;
@@ -269,6 +275,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // 🔁 Función reutilizable para mostrar errores claros al usuario
+    async function mostrarErrorDesdeResponse(respuesta, mensajePorDefecto) {
+        try {
+            const errorJson = await respuesta.json();
+            const mensaje = errorJson.detail || mensajePorDefecto;
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Error',
+                text: mensaje,
+            });
+        } catch {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error inesperado',
+                text: mensajePorDefecto,
+            });
+        }
+    }
+
     document.getElementById("logoutBtn")?.addEventListener("click", () => {
         localStorage.removeItem("jwt_token");
         localStorage.removeItem("usuario_actual");
@@ -358,8 +384,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
 
                         if (!res.ok) {
-                            const mensajeError = await res.text();
-
+                            const errorJson = await res.json();
+                            const mensajeError = errorJson.detail || "Error inesperado";
                             // ⚠️ Mostrar mensaje personalizado según tipo de error
                             if (res.status === 400 || res.status === 404) {
                                 Swal.fire({
@@ -394,7 +420,74 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+
+
+        // 🔒 Cerrar caso
+        if (e.target.closest(".btn-cerrar")) {
+            const btn = e.target.closest(".btn-cerrar");
+            const id = btn.dataset.id;
+
+            // 🔄 Preguntar motivo de cierre
+            const { value: motivo } = await Swal.fire({
+                title: "Cerrar caso",
+                input: "textarea",
+                inputLabel: "Motivo del cierre (opcional)",
+                inputPlaceholder: "Escribe el motivo si corresponde...",
+                inputAttributes: {
+                    "aria-label": "Motivo de cierre"
+                },
+                showCancelButton: true,
+                confirmButtonText: "Cerrar caso",
+                cancelButtonText: "Cancelar"
+            });
+
+            if (motivo === undefined) return; // Usuario canceló
+
+            try {
+                Swal.fire({
+                    title: "Cerrando caso...",
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+
+                const res = await fetch(`${apiUrl}/${id}/cerrar`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ motivoCierre: motivo })
+                });
+
+                if (!res.ok) {
+                    const errorJson = await res.json();
+                    throw new Error(errorJson.detail || "Error inesperado");
+                }
+
+                await cargarCasosDesdeBackend();
+
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Caso cerrado con éxito',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true
+                });
+
+            } catch (error) {
+                console.error("Error al cerrar caso:", error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Error al cerrar",
+                    text: error.message || "No se pudo cerrar el caso."
+                });
+            }
+        }
+
     });
+
 
 
 
@@ -465,8 +558,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(caso)
             });
 
-            if (!response.ok) throw new Error(`Error al ${esNuevo ? "crear" : "actualizar"} el caso`);
-
+            if (!response.ok) {
+                const errorJson = await response.json();
+                throw new Error(errorJson.detail || `Error al ${esNuevo ? "crear" : "actualizar"} el caso`);
+            }
             bootstrap.Modal.getInstance(document.getElementById("modalGestionCaso")).hide();
 
 
@@ -485,14 +580,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         } catch (error) {
-            console.error(`Error al ${esNuevo ? "crear" : "actualizar"} el caso:`, error);
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: `❌ No se pudo ${esNuevo ? "crear" : "actualizar"} el caso.`,
-            });
+            await mostrarErrorDesdeResponse(response, `No se pudo ${esNuevo ? "crear" : "actualizar"} el caso.`);
+        
         }
+      
 
     });
 });
