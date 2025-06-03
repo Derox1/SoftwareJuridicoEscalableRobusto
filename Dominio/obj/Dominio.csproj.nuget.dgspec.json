@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\Dominio\\Dominio.csproj": {}
+    "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Dominio\\Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\Dominio\\Dominio.csproj": {
+    "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\Dominio\\Dominio.csproj",
+        "projectPath": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Dominio\\Dominio.csproj",
         "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\basti\\Documents\\proyectos portafolio\\SoftwareJuridicoEscalableRobusto\\Dominio\\obj\\",
+        "outputPath": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

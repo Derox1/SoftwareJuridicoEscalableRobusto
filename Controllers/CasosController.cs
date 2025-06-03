@@ -207,8 +207,19 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Eliminar(int id)
         {
-            await _eliminarCasoService.EjecutarAsync(id);
-            return NoContent();
+            try
+            {
+                await _eliminarCasoService.EjecutarAsync(id);
+                return NoContent();
+            }
+            catch (InvalidOperationException ex) // Caso cerrado
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex) // Caso no encontrado u otro error
+            {
+                return NotFound(ex.Message);
+            }
         }
 
 
