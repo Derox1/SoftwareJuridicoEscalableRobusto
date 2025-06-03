@@ -21,6 +21,11 @@ namespace Dominio.Entidades
         public string? MotivoCierre { get; set; }
         public DateTime? FechaCierre { get; set; }
 
+        // Auditoría básica
+        public string CreatedBy { get; set; } = string.Empty;
+        public string? ModifiedBy { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
+
 
         // Validación de estados
         public bool PuedeSerCerrado() => Estado == EstadoCaso.EnProceso;

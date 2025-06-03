@@ -31,7 +31,9 @@ namespace Aplicacion.Servicios.Auth
             var claims = new[]
             {
             new Claim(ClaimTypes.Email, email),     // Quién es el usuario
-            new Claim(ClaimTypes.Role, rol)           // Qué rol tiene (Admin, Cliente, etc)
+            new Claim(ClaimTypes.Role, rol),           // Qué rol tiene (Admin, Cliente, etc)
+            new Claim(ClaimTypes.Name, email) //  Esto activa User.Identity.Name
+
         };
 
             // 5. Crear el objeto JWT con toda la información configurada

@@ -14,6 +14,7 @@ using System;
 using Aplicacion.Servicios.Auth;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
+using System.Security.Claims;
 
 
 
@@ -36,6 +37,9 @@ builder.Services.AddScoped<CerrarCasoService>();
 builder.Services.AddScoped<EliminarCasoService>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+
+builder.Services.AddHttpContextAccessor();
+
 
 
 //🔹 Validaciones (FluentValidation)
@@ -114,7 +118,9 @@ builder.Services.AddAuthentication("Bearer")
             ValidIssuer = jwtSettings["Issuer"],
             ValidAudience = jwtSettings["Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(jwtSettings["Key"]))
+                Encoding.UTF8.GetBytes(jwtSettings["Key"])),
+            // ✅ Esta línea es la clave
+            NameClaimType = ClaimTypes.Name
         };
     });
 builder.Services.AddAuthorization(options =>
