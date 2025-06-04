@@ -2,6 +2,29 @@
 /* =========================
    FONDO Y OVERLAY GENERAL
 ========================= */
+/*video de FONDO 
+*/
+#bg-video-dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5); /* Puedes ajustar si está muy claro u oscuro */
+}
+/*BODY NUEVO MAS ESTETICO 
+*/body {
+    position: relative;
+    z-index: 10;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* BODY ANTIGUO
 body {
     background: url('/img/fondo-legal.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -10,7 +33,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
-}
+}*/
     /* Capa oscura y desenfoque sobre el fondo */
 
     body::before {

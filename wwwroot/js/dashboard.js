@@ -84,6 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const estadoSeleccionado = filtroEstado.value?.trim();
         filtros.estado = estadoSeleccionado || null;
         filtros.pagina = 1;
+        let casosFiltrados = [];
+
         cargarCasosDesdeBackend();
     });
 
@@ -155,6 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             //validacion para mostrar mensaje de cerrar solo si no esta cerrado
             const puedeCerrar = caso.estado.toLowerCase() !== "cerrado";
+            const puedeEditar = caso.estado.toLowerCase() !== "cerrado";
+            const puedeEliminar = caso.estado.toLowerCase() !== "cerrado";
+
+
 
 
             const row = `
@@ -169,12 +175,16 @@ document.addEventListener("DOMContentLoaded", () => {
                    <button class="btn btn-sm btn-outline-light me-1 btn-ver" data-id="${caso.id}" title="Ver">
                    <i class="bi bi-eye-fill"></i>
                     </button>
-                    <button class="btn btn-sm btn-outline-warning" title="Editar">
-                        <i class="bi bi-pencil-fill"></i>
-                    </button>
-                      <button class="btn btn-sm btn-outline-danger btn-eliminar" data-id="${caso.id}" title="Eliminar">
-                    <i class="bi bi-trash-fill"></i>
-                     </button>
+                    ${puedeEditar ? `
+                      <button class="btn btn-sm btn-outline-warning" title="Editar">
+                         <i class="bi bi-pencil-fill"></i>
+                      </button>` : ""}
+
+                                  ${puedeEliminar ? `
+                   <button class="btn btn-sm btn-outline-danger btn-eliminar" data-id="${caso.id}" title="Eliminar">
+                       <i class="bi bi-trash-fill"></i>
+                   </button>` : ""}
+
                       ${puedeCerrar ? `
                      <button class="btn btn-sm btn-outline-secondary btn-cerrar" data-id="${caso.id}" title="Cerrar">
                        <i class="bi bi-lock-fill"></i>
@@ -315,6 +325,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target.closest(".btn-outline-warning")) {
             const row = e.target.closest("tr");
             const id = row.children[0].textContent;
+            const estado = row.children[2].innerText.trim().toLowerCase();
+            if (estado === "cerrado") {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'No editable',
+                    text: 'Este caso está cerrado y no puede ser modificado.',
+                });
+                return;
+            }
+
+
 
             fetch(`${apiUrl}/${id}`, {
                 headers: { "Authorization": `Bearer ${token}` }
@@ -499,6 +520,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnNuevoCaso")?.addEventListener("click", () => {
         // Limpiar el formulario antes de abrir
 
+        // Limpiar opciones previas por si viene de modo edición
+        choicesEstadoForm.clearChoices();
+        choicesEstadoForm.setChoices([
+            { value: "Pendiente", label: "Pendiente", selected: true },
+        ], 'value', 'label', false);
+
         document.getElementById("formGestionCaso").reset();
         document.getElementById("form-id").value = ""; // dejar vacío para saber que es nuevo
         // 🆕 Limpiar campo cliente (solo visual)
@@ -568,22 +595,33 @@ document.addEventListener("DOMContentLoaded", () => {
             // ✅ Recarga la tabla
             await cargarCasosDesdeBackend();
 
+            let estadoFinal = choicesEstadoForm.getValue(true).toLowerCase();
+            if (esNuevo && estadoFinal === "cerrado") {
+                estadoFinal = "pendiente"; // porque backend lo corrige automáticamente
+            }
+
+            const mensaje =
+                esNuevo
+                    ? `Caso ${estadoFinal === "cerrado" ? "cerrado" : "creado"} con éxito`
+                    : `Caso ${estadoFinal === "cerrado" ? "cerrado" : "actualizado"} con éxito`;
+
             Swal.fire({
                 toast: true,
                 position: 'top-end',
                 icon: 'success',
-                title: `Caso ${esNuevo ? "creado" : "actualizado"} con éxito`,
+                title: mensaje,
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true
             });
 
 
+
         } catch (error) {
             await mostrarErrorDesdeResponse(response, `No se pudo ${esNuevo ? "crear" : "actualizar"} el caso.`);
-        
+
         }
-      
+
 
     });
 });

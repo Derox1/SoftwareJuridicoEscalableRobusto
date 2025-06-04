@@ -46,13 +46,29 @@ public class CerrarCasoService
 
         //  Obtener caso
         var caso = await _casoRepository.ObtenerPorIdAsync(casoId);
+  
 
-     
         if (caso is null)
             return new CerrarCasoResultado { Exito = false, NoEncontrado = true, Mensaje = "El caso no existe." };
 
         if (caso.EstaCerrado())
             return new CerrarCasoResultado { Exito = false, EsErrorNegocio = true, Mensaje = "El caso ya está cerrado." };
+
+        if (caso is null)
+            return new CerrarCasoResultado
+            {
+                Exito = false,
+                NoEncontrado = true,
+                Mensaje = "El caso no existe."
+            };
+
+        if (caso.Estado == EstadoCaso.Cerrado || caso.EstaCerrado())
+            return new CerrarCasoResultado
+            {
+                Exito = false,
+                EsErrorNegocio = true,
+                Mensaje = "Este caso ya está cerrado y no puede volver a cerrarse."
+            };
 
 
         // 🔄 Lógica según estado
@@ -80,6 +96,7 @@ public class CerrarCasoService
         {
             return new CerrarCasoResultado { Exito = false, EsErrorNegocio = true, Mensaje = "No se puede cerrar este caso en su estado actual." };
         }
+
 
         // Auditoría profesional
         caso.UpdatedAt = DateTime.UtcNow;
