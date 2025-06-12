@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ULoreEvkAnObtLoRRMzIStkorMuutxOLWz1MgunXfpw=",
+  "Hash": "0jd+1xND/+WGfIBJHpjBFDnaOvGu2FF6jEXkqTk8LPA=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ts3xury5hy",
-      "Integrity": "fRuYr4pBjANxRmPu8JVaDfLAP2G8EQ/6YCaLh4h99Dc=",
+      "Fingerprint": "o47ix3kx8n",
+      "Integrity": "aN69daIuPAKVSkOL2GklH/IkacxJI4Ix0+/+hvIXv5Y=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\dashboard.css"
@@ -94,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "y3n007hwdg",
-      "Integrity": "/gAw8fURKS87YFVz2KH/vE3gYNRs5d8mYqbGdbyL65Q=",
+      "Fingerprint": "3sxkptynkq",
+      "Integrity": "/er3+og8O+qCAyUNljvumhAvbkNchWttsOIIS3VJ77s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dashboard.html"
@@ -157,8 +157,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xwe6b0nvis",
-      "Integrity": "/1PbfBeBfXzRN/+5GRtV5S7gR4q9+SFFOF4Nz2CxgtU=",
+      "Fingerprint": "vtft7fyvf0",
+      "Integrity": "nSfPsLUyzmTnSKHgdVX+oCPjHEO/nT8lrgjOK9BjlAU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\dashboard.js"
@@ -183,6 +183,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\login.js"
+    },
+    {
+      "Identity": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\roles.js",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "js/roles#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fx2zt6gs92",
+      "Integrity": "kw5hP9kZ1WcMDHImpV4vMh6RG+ALgA/N/wEuv4fCc6M=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\roles.js"
     },
     {
       "Identity": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\login.html",
@@ -363,7 +384,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13843"
+          "Value": "16287"
         },
         {
           "Name": "Content-Type",
@@ -371,11 +392,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fRuYr4pBjANxRmPu8JVaDfLAP2G8EQ/6YCaLh4h99Dc=\""
+          "Value": "\"aN69daIuPAKVSkOL2GklH/IkacxJI4Ix0+/+hvIXv5Y=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 01:34:14 GMT"
+          "Value": "Thu, 12 Jun 2025 11:55:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -385,12 +406,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fRuYr4pBjANxRmPu8JVaDfLAP2G8EQ/6YCaLh4h99Dc="
+          "Value": "sha256-aN69daIuPAKVSkOL2GklH/IkacxJI4Ix0+/+hvIXv5Y="
         }
       ]
     },
     {
-      "Route": "css/dashboard.ts3xury5hy.css",
+      "Route": "css/dashboard.o47ix3kx8n.css",
       "AssetFile": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\css\\dashboard.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -400,7 +421,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "13843"
+          "Value": "16287"
         },
         {
           "Name": "Content-Type",
@@ -408,11 +429,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fRuYr4pBjANxRmPu8JVaDfLAP2G8EQ/6YCaLh4h99Dc=\""
+          "Value": "\"aN69daIuPAKVSkOL2GklH/IkacxJI4Ix0+/+hvIXv5Y=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 01:34:14 GMT"
+          "Value": "Thu, 12 Jun 2025 11:55:33 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -422,7 +443,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ts3xury5hy"
+          "Value": "o47ix3kx8n"
         },
         {
           "Name": "label",
@@ -430,7 +451,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-fRuYr4pBjANxRmPu8JVaDfLAP2G8EQ/6YCaLh4h99Dc="
+          "Value": "sha256-aN69daIuPAKVSkOL2GklH/IkacxJI4Ix0+/+hvIXv5Y="
         }
       ]
     },
@@ -517,6 +538,51 @@
       ]
     },
     {
+      "Route": "dashboard.3sxkptynkq.html",
+      "AssetFile": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\dashboard.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14776"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/er3+og8O+qCAyUNljvumhAvbkNchWttsOIIS3VJ77s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Jun 2025 11:21:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3sxkptynkq"
+        },
+        {
+          "Name": "label",
+          "Value": "dashboard.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/er3+og8O+qCAyUNljvumhAvbkNchWttsOIIS3VJ77s="
+        }
+      ]
+    },
+    {
       "Route": "dashboard.html",
       "AssetFile": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\dashboard.html",
       "Selectors": [],
@@ -527,7 +593,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12981"
+          "Value": "14776"
         },
         {
           "Name": "Content-Type",
@@ -535,11 +601,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/gAw8fURKS87YFVz2KH/vE3gYNRs5d8mYqbGdbyL65Q=\""
+          "Value": "\"/er3+og8O+qCAyUNljvumhAvbkNchWttsOIIS3VJ77s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 04:15:30 GMT"
+          "Value": "Thu, 12 Jun 2025 11:21:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -549,52 +615,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/gAw8fURKS87YFVz2KH/vE3gYNRs5d8mYqbGdbyL65Q="
-        }
-      ]
-    },
-    {
-      "Route": "dashboard.y3n007hwdg.html",
-      "AssetFile": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\dashboard.html",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "12981"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"/gAw8fURKS87YFVz2KH/vE3gYNRs5d8mYqbGdbyL65Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 04:15:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "y3n007hwdg"
-        },
-        {
-          "Name": "label",
-          "Value": "dashboard.html"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-/gAw8fURKS87YFVz2KH/vE3gYNRs5d8mYqbGdbyL65Q="
+          "Value": "sha256-/er3+og8O+qCAyUNljvumhAvbkNchWttsOIIS3VJ77s="
         }
       ]
     },
@@ -773,7 +794,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "23794"
+          "Value": "25288"
         },
         {
           "Name": "Content-Type",
@@ -781,11 +802,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/1PbfBeBfXzRN/+5GRtV5S7gR4q9+SFFOF4Nz2CxgtU=\""
+          "Value": "\"nSfPsLUyzmTnSKHgdVX+oCPjHEO/nT8lrgjOK9BjlAU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 04:15:12 GMT"
+          "Value": "Thu, 12 Jun 2025 11:57:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -795,12 +816,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/1PbfBeBfXzRN/+5GRtV5S7gR4q9+SFFOF4Nz2CxgtU="
+          "Value": "sha256-nSfPsLUyzmTnSKHgdVX+oCPjHEO/nT8lrgjOK9BjlAU="
         }
       ]
     },
     {
-      "Route": "js/dashboard.xwe6b0nvis.js",
+      "Route": "js/dashboard.vtft7fyvf0.js",
       "AssetFile": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -810,7 +831,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "23794"
+          "Value": "25288"
         },
         {
           "Name": "Content-Type",
@@ -818,11 +839,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/1PbfBeBfXzRN/+5GRtV5S7gR4q9+SFFOF4Nz2CxgtU=\""
+          "Value": "\"nSfPsLUyzmTnSKHgdVX+oCPjHEO/nT8lrgjOK9BjlAU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Jun 2025 04:15:12 GMT"
+          "Value": "Thu, 12 Jun 2025 11:57:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -832,7 +853,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xwe6b0nvis"
+          "Value": "vtft7fyvf0"
         },
         {
           "Name": "label",
@@ -840,7 +861,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-/1PbfBeBfXzRN/+5GRtV5S7gR4q9+SFFOF4Nz2CxgtU="
+          "Value": "sha256-nSfPsLUyzmTnSKHgdVX+oCPjHEO/nT8lrgjOK9BjlAU="
         }
       ]
     },
@@ -923,6 +944,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-biPZAUL8SO3yqzcoVqKj9gcJPT1SC78GM+xYSEMGEic="
+        }
+      ]
+    },
+    {
+      "Route": "js/roles.fx2zt6gs92.js",
+      "AssetFile": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\roles.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7026"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kw5hP9kZ1WcMDHImpV4vMh6RG+ALgA/N/wEuv4fCc6M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Jun 2025 10:59:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fx2zt6gs92"
+        },
+        {
+          "Name": "label",
+          "Value": "js/roles.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kw5hP9kZ1WcMDHImpV4vMh6RG+ALgA/N/wEuv4fCc6M="
+        }
+      ]
+    },
+    {
+      "Route": "js/roles.js",
+      "AssetFile": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\roles.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7026"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kw5hP9kZ1WcMDHImpV4vMh6RG+ALgA/N/wEuv4fCc6M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 12 Jun 2025 10:59:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kw5hP9kZ1WcMDHImpV4vMh6RG+ALgA/N/wEuv4fCc6M="
         }
       ]
     },

@@ -15,6 +15,8 @@ namespace Dominio.Entidades
         public string Rol { get; set; } = "Cliente";
 
         // Validaciones específicas (puedes usar esto más adelante en reglas de negocio)
+        public ICollection<UsuarioRol> UsuarioRoles { get; set; } = new List<UsuarioRol>();
+
         public bool EsAdmin() => Rol.Equals("Admin", StringComparison.OrdinalIgnoreCase);
         public bool EsAbogado() => Rol.Equals("Abogado", StringComparison.OrdinalIgnoreCase);
         public bool EsCliente() => Rol.Equals("Cliente", StringComparison.OrdinalIgnoreCase);

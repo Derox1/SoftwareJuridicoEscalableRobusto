@@ -15,6 +15,6 @@ namespace Aplicacion.Servicios.Auth
     public interface IJwtService
     {
         // Método que debe implementar cualquier clase que quiera generar JWTs.
-        string GenerarToken(string username, string rol);
+        string GenerarToken(string email, int usuarioId, List<string> roles);
     }
 }

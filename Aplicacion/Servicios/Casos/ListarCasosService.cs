@@ -74,6 +74,8 @@ namespace Aplicacion.Servicios.Casos
                 TotalRegistros = total,
                 Pagina = filtro.Pagina,
                 Tamanio = filtro.Tamanio,
+                TotalPaginas = (int)Math.Ceiling((double)total / filtro.Tamanio), // ✅ Línea nueva
+
                 Resumen = resumen
             };
         }

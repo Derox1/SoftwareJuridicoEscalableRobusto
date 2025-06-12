@@ -1,5 +1,4 @@
 ﻿
-
 document.addEventListener("DOMContentLoaded", () => {
 
     /*➡️ Espera que el DOM esté completamente cargado antes de ejecutar el código JS (buena práctica para manipular el DOM).
@@ -77,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cargarCasosDesdeBackend();
 
+
     /**➡️ Ejecuta carga inicial. */
 
 
@@ -143,6 +143,21 @@ document.addEventListener("DOMContentLoaded", () => {
         renderizarTabla(data.items);
         actualizarResumen(data.resumen);
         mostrarMensajeInformativo(data.items.length, data.totalRegistros);
+        renderizarPaginacion(data.pagina, data.totalPaginas);
+        // 🆕 Manejar clics en botones de paginación
+        document.addEventListener("click", (e) => {
+            const link = e.target.closest("#paginacion .page-link");
+            if (!link) return;
+
+            e.preventDefault();
+
+            const nuevaPagina = parseInt(link.dataset.page);
+            if (!isNaN(nuevaPagina) && nuevaPagina !== filtros.pagina) {
+                filtros.pagina = nuevaPagina;
+                cargarCasosDesdeBackend();
+            }
+        });
+
     }
     function renderizarTabla(lista) {
         const tbody = document.getElementById("casosBody");
@@ -204,6 +219,27 @@ document.addEventListener("DOMContentLoaded", () => {
             tbody.classList.remove("opacity-0");
             tbody.classList.add("opacity-100");
         }, 50);
+    }
+    function renderizarPaginacion(paginaActual, totalPaginas) {
+        const paginacion = document.getElementById("paginacion");
+        paginacion.innerHTML = "";
+
+        if (totalPaginas <= 1) return;
+
+        const crearItem = (label, page, disabled = false, active = false) => {
+            const li = document.createElement("li");
+            li.className = `page-item ${disabled ? "disabled" : ""} ${active ? "active" : ""}`;
+            li.innerHTML = `<a class="page-link" href="#" data-page="${page}">${label}</a>`;
+            return li;
+        };
+
+        paginacion.appendChild(crearItem("Anterior", paginaActual - 1, paginaActual === 1));
+
+        for (let i = 1; i <= totalPaginas; i++) {
+            paginacion.appendChild(crearItem(i, i, false, i === paginaActual));
+        }
+
+        paginacion.appendChild(crearItem("Siguiente", paginaActual + 1, paginaActual === totalPaginas));
     }
     function actualizarResumen(resumen) {
         document.getElementById("totalCasos").textContent = resumen.total;
@@ -439,6 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         Swal.fire('Error', error.message, 'error');
                     }
                 }
+
             });
         }
 
@@ -506,16 +543,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
         }
-
     });
-
-
-
-
-
-
-
-
+      
 
     document.getElementById("btnNuevoCaso")?.addEventListener("click", () => {
         // Limpiar el formulario antes de abrir
@@ -624,5 +653,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     });
+  
 });
 

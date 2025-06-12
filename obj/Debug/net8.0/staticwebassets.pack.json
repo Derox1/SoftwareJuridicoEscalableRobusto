@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\js\\login.js"
     },
     {
+      "Id": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\roles.js",
+      "PackagePath": "staticwebassets\\js\\roles.js"
+    },
+    {
       "Id": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\login.html",
       "PackagePath": "staticwebassets\\login.html"
     },
