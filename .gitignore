@@ -1,0 +1,23 @@
+# Carpetas de compilación
+bin/
+obj/
+out/
+TestResults/
+
+# Archivos de configuración sensibles
+appsettings*.json
+
+# Archivos temporales y logs
+*.log
+*.tmp
+*.bak
+
+# VSCode/IDE
+.vscode/
+*.user
+*.suo
+.idea/
+
+# Otros
+node_modules/
+.env
