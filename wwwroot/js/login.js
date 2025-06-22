@@ -46,18 +46,32 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             throw new Error("Login failed: " + response.status);
         }
 
+      /*  const data = await response.json();*/
         const data = await response.json();
+        const token = data.token;
+        localStorage.setItem("jwt_token", token);
+       
+        // ✅ Decodificar manualmente
+        const payloadBase64 = token.split('.')[1];
+        const payloadJson = atob(payloadBase64);
+        const payload = JSON.parse(payloadJson);
 
-        // Guarda el token
-        localStorage.setItem("jwt_token", data.token);
 
-        // Guarda datos del usuario (puedes expandir esto según lo que devuelva tu backend)
         const usuario = {
-            email: data.email,
-            nombre: data.nombre || "Usuario",
-            rol: data.rol
+            email: payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"] || "",
+            nombre: payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] || "Usuario",
+            rol: payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || []
         };
+
         localStorage.setItem("usuario_actual", JSON.stringify(usuario));
+
+        //// Guarda datos del usuario (puedes expandir esto según lo que devuelva tu backend)
+        //const usuario = {
+        //    email: data.email,
+        //    nombre: data.nombre || "Usuario",
+        //    rol: data.rol
+        //};
+        //localStorage.setItem("usuario_actual", JSON.stringify(usuario));
 
         // Redirigir inmediatamente
 

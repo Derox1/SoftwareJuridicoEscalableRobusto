@@ -1,10 +1,23 @@
 ﻿
-
 document.addEventListener("DOMContentLoaded", () => {
 
     /*➡️ Espera que el DOM esté completamente cargado antes de ejecutar el código JS (buena práctica para manipular el DOM).
     
     */
+    function obtenerRolesDesdeJWT() {
+        const token = localStorage.getItem("jwt_token");
+        if (!token) return [];
+        try {
+            const payloadBase64 = token.split('.')[1];
+            const payloadJson = atob(payloadBase64);
+            const payload = JSON.parse(payloadJson);
+            const roles = payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+            return Array.isArray(roles) ? roles : [roles]; // Siempre devuelve un array
+        } catch (e) {
+            console.error("Error al decodificar el token:", e);
+            return [];
+        }
+    }
 
     const apiUrl = "https://localhost:7266/api/Casos";
     /*➡️ Define la URL base para la API de casos.
@@ -20,9 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
 */
 
     const saludo = document.getElementById("saludoUsuario");
-    /*➡️ Elemento donde mostrarás “Hola, Usuario”.
-    
-    */
+    /*➡️ Elemento donde mostrarás “Hola, Usuario”.*/
+    const roles = obtenerRolesDesdeJWT();
+    console.log("Rol del usuario:", roles);
+    aplicarVisibilidadPorRol(roles);
+
     // Aplicamos Choise.Js
     const filtroEstado = document.getElementById("filtroEstado");
     const choicesEstado = new Choices(filtroEstado, {
@@ -72,10 +87,67 @@ document.addEventListener("DOMContentLoaded", () => {
     if (saludo && usuario.nombre) {
         saludo.textContent = `Hola, ${usuario.nombre}`;
     }
+    function aplicarVisibilidadPorRol(roles) {
+        const gestionRoles = document.getElementById("seccion-gestion-roles");
+        const btnNuevoCaso = document.getElementById("btnNuevoCaso");
+        const tablaCasos = document.getElementById("tablaCasosWrapper");
+        const seccionUsuarios = document.getElementById("seccion-usuarios");
+        const btnNuevoUsuario = document.getElementById("btnNuevoUsuario");
+
+
+        // Si no hay roles, ocultar todo
+        if (!roles || roles.length === 0) {
+            gestionRoles?.classList.add("d-none");
+            btnNuevoCaso?.classList.add("d-none");
+            tablaCasos?.classList.add("d-none");
+            seccionUsuarios?.classList.add("d-none");
+            btnNuevoUsuario?.classList.add("d-none");
+            return;
+        }
+        // Usa validaciones antes de modificar estilos:
+        if (seccionUsuarios && roles.includes("Admin")) {
+            seccionUsuarios.classList.remove("d-none");
+        }
+
+        if (btnNuevoUsuario && roles.includes("Admin")) {
+            btnNuevoUsuario.classList.remove("d-none");
+        }
+
+        if (roles.includes("Admin")) {
+            gestionRoles?.classList.remove("d-none");
+            btnNuevoCaso?.classList.remove("d-none");
+            tablaCasos?.classList.remove("d-none");
+            seccionUsuarios?.classList.remove("d-none");
+            btnNuevoUsuario?.classList.remove("d-none");
+        }
+
+        if (roles.includes("Abogado")) {
+            btnNuevoCaso?.classList.remove("d-none");
+            tablaCasos?.classList.remove("d-none");
+        }
+        if (roles.includes("Soporte")) {
+            // Ocultar botón 'Nuevo Caso'
+            document.getElementById("btnNuevoCaso")?.classList.add("d-none");
+
+            // Desactivar los botones Editar y Eliminar de la tabla
+            document.querySelectorAll(".btn-outline-warning, .btn-eliminar").forEach(btn => {
+                btn.classList.add("d-none");
+            }); btnNuevoUsuario
+
+            // Ocultar módulo de asignación de roles (si es visible)
+            document.getElementById("modulo-roles")?.classList.add("d-none");
+        }
+
+        if (roles.includes("Soporte")) {
+            seccionUsuarios?.classList.remove("d-none");
+            btnNuevoUsuario?.classList.remove("d-none");
+        }
+    }
 
     /*➡️ Personaliza el saludo si el usuario tiene nombre guardado.*/
 
     cargarCasosDesdeBackend();
+
 
     /**➡️ Ejecuta carga inicial. */
 
@@ -84,6 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const estadoSeleccionado = filtroEstado.value?.trim();
         filtros.estado = estadoSeleccionado || null;
         filtros.pagina = 1;
+        let casosFiltrados = [];
+
         cargarCasosDesdeBackend();
     });
 
@@ -141,6 +215,21 @@ document.addEventListener("DOMContentLoaded", () => {
         renderizarTabla(data.items);
         actualizarResumen(data.resumen);
         mostrarMensajeInformativo(data.items.length, data.totalRegistros);
+        renderizarPaginacion(data.pagina, data.totalPaginas);
+        // 🆕 Manejar clics en botones de paginación
+        document.addEventListener("click", (e) => {
+            const link = e.target.closest("#paginacion .page-link");
+            if (!link) return;
+
+            e.preventDefault();
+
+            const nuevaPagina = parseInt(link.dataset.page);
+            if (!isNaN(nuevaPagina) && nuevaPagina !== filtros.pagina) {
+                filtros.pagina = nuevaPagina;
+                cargarCasosDesdeBackend();
+            }
+        });
+
     }
     function renderizarTabla(lista) {
         const tbody = document.getElementById("casosBody");
@@ -155,6 +244,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             //validacion para mostrar mensaje de cerrar solo si no esta cerrado
             const puedeCerrar = caso.estado.toLowerCase() !== "cerrado";
+            const puedeEditar = caso.estado.toLowerCase() !== "cerrado";
+            const puedeEliminar = caso.estado.toLowerCase() !== "cerrado";
+
+
 
 
             const row = `
@@ -169,12 +262,16 @@ document.addEventListener("DOMContentLoaded", () => {
                    <button class="btn btn-sm btn-outline-light me-1 btn-ver" data-id="${caso.id}" title="Ver">
                    <i class="bi bi-eye-fill"></i>
                     </button>
-                    <button class="btn btn-sm btn-outline-warning" title="Editar">
-                        <i class="bi bi-pencil-fill"></i>
-                    </button>
-                      <button class="btn btn-sm btn-outline-danger btn-eliminar" data-id="${caso.id}" title="Eliminar">
-                    <i class="bi bi-trash-fill"></i>
-                     </button>
+                    ${puedeEditar ? `
+                      <button class="btn btn-sm btn-outline-warning" title="Editar">
+                         <i class="bi bi-pencil-fill"></i>
+                      </button>` : ""}
+
+                                  ${puedeEliminar ? `
+                   <button class="btn btn-sm btn-outline-danger btn-eliminar" data-id="${caso.id}" title="Eliminar">
+                       <i class="bi bi-trash-fill"></i>
+                   </button>` : ""}
+
                       ${puedeCerrar ? `
                      <button class="btn btn-sm btn-outline-secondary btn-cerrar" data-id="${caso.id}" title="Cerrar">
                        <i class="bi bi-lock-fill"></i>
@@ -194,6 +291,27 @@ document.addEventListener("DOMContentLoaded", () => {
             tbody.classList.remove("opacity-0");
             tbody.classList.add("opacity-100");
         }, 50);
+    }
+    function renderizarPaginacion(paginaActual, totalPaginas) {
+        const paginacion = document.getElementById("paginacion");
+        paginacion.innerHTML = "";
+
+        if (totalPaginas <= 1) return;
+
+        const crearItem = (label, page, disabled = false, active = false) => {
+            const li = document.createElement("li");
+            li.className = `page-item ${disabled ? "disabled" : ""} ${active ? "active" : ""}`;
+            li.innerHTML = `<a class="page-link" href="#" data-page="${page}">${label}</a>`;
+            return li;
+        };
+
+        paginacion.appendChild(crearItem("Anterior", paginaActual - 1, paginaActual === 1));
+
+        for (let i = 1; i <= totalPaginas; i++) {
+            paginacion.appendChild(crearItem(i, i, false, i === paginaActual));
+        }
+
+        paginacion.appendChild(crearItem("Siguiente", paginaActual + 1, paginaActual === totalPaginas));
     }
     function actualizarResumen(resumen) {
         document.getElementById("totalCasos").textContent = resumen.total;
@@ -315,6 +433,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target.closest(".btn-outline-warning")) {
             const row = e.target.closest("tr");
             const id = row.children[0].textContent;
+            const estado = row.children[2].innerText.trim().toLowerCase();
+            if (estado === "cerrado") {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'No editable',
+                    text: 'Este caso está cerrado y no puede ser modificado.',
+                });
+                return;
+            }
+
+
 
             fetch(`${apiUrl}/${id}`, {
                 headers: { "Authorization": `Bearer ${token}` }
@@ -327,7 +456,32 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById("form-cliente").readOnly = true; //  SOLO LECTURA
                     document.getElementById("grupo-cliente").style.display = "block"; //  Mostrar campo
                     document.getElementById("form-descripcion").value = data.descripcion;
-                    choicesEstadoForm.setChoiceByValue(data.estado);
+
+                    choicesEstadoForm.clearChoices();
+                    const estadoActual = data.estado;
+                    let opcionesEstado = [];
+
+                    if (estadoActual === "Pendiente") {
+                        opcionesEstado = [
+                            { value: "EnProceso", label: "En proceso" }
+                        ];
+                    } else if (estadoActual === "EnProceso") {
+                        opcionesEstado = [
+                            { value: "Cerrado", label: "Cerrado" }
+                        ];
+                    } else if (estadoActual === "Cerrado") {
+                        opcionesEstado = [
+                            { value: "Cerrado", label: "Cerrado", disabled: true }
+                        ];
+                    }
+                    choicesEstadoForm.setChoices(opcionesEstado, 'value', 'label', false);
+                    if (opcionesEstado.length === 1) {
+                        choicesEstadoForm.setChoiceByValue(opcionesEstado[0].value);
+                    }
+
+
+
+                    //choicesEstadoForm.setChoiceByValue(data.estado);
                     choicesTipoForm.setChoiceByValue(data.tipoCaso);
 
 
@@ -418,6 +572,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         Swal.fire('Error', error.message, 'error');
                     }
                 }
+
             });
         }
 
@@ -485,19 +640,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
         }
-
     });
-
-
-
-
-
-
-
-
+      
 
     document.getElementById("btnNuevoCaso")?.addEventListener("click", () => {
         // Limpiar el formulario antes de abrir
+
+        // Limpiar opciones previas por si viene de modo edición
+        choicesEstadoForm.clearChoices();
+        choicesEstadoForm.setChoices([
+            { value: "Pendiente", label: "Pendiente", selected: true },
+        ], 'value', 'label', false);
 
         document.getElementById("formGestionCaso").reset();
         document.getElementById("form-id").value = ""; // dejar vacío para saber que es nuevo
@@ -568,23 +721,35 @@ document.addEventListener("DOMContentLoaded", () => {
             // ✅ Recarga la tabla
             await cargarCasosDesdeBackend();
 
+            let estadoFinal = choicesEstadoForm.getValue(true).toLowerCase();
+            if (esNuevo && estadoFinal === "cerrado") {
+                estadoFinal = "pendiente"; // porque backend lo corrige automáticamente
+            }
+
+            const mensaje =
+                esNuevo
+                    ? `Caso ${estadoFinal === "cerrado" ? "cerrado" : "creado"} con éxito`
+                    : `Caso ${estadoFinal === "cerrado" ? "cerrado" : "actualizado"} con éxito`;
+
             Swal.fire({
                 toast: true,
                 position: 'top-end',
                 icon: 'success',
-                title: `Caso ${esNuevo ? "creado" : "actualizado"} con éxito`,
+                title: mensaje,
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true
             });
 
 
+
         } catch (error) {
             await mostrarErrorDesdeResponse(response, `No se pudo ${esNuevo ? "crear" : "actualizar"} el caso.`);
-        
+
         }
-      
+
 
     });
+  
 });
 

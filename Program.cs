@@ -15,6 +15,9 @@ using Aplicacion.Servicios.Auth;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using System.Security.Claims;
+using Infraestructura.Servicios;
+using MediatR;
+using Aplicacion.Usuarios.Handlers; // solo si hace falta para encontrar el handler
 
 
 
@@ -37,6 +40,12 @@ builder.Services.AddScoped<CerrarCasoService>();
 builder.Services.AddScoped<EliminarCasoService>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddScoped<IRolRepositorio, RolRepositorio>();
+
+builder.Services.AddScoped<IHashService, HashService>();
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssemblyContaining<Aplicacion.Usuarios.Handlers.CrearUsuarioCommandHandler>());
 
 builder.Services.AddHttpContextAccessor();
 
@@ -120,7 +129,8 @@ builder.Services.AddAuthentication("Bearer")
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(jwtSettings["Key"])),
             // ✅ Esta línea es la clave
-            NameClaimType = ClaimTypes.Name
+            NameClaimType = ClaimTypes.Name,
+            RoleClaimType = ClaimTypes.Role
         };
     });
 builder.Services.AddAuthorization(options =>
@@ -149,14 +159,14 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = "swagger"; // <- esto asegura que cargue en /swagger
 });
 app.UseHttpsRedirection();
-app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseDefaultFiles();
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseCors("PermitirFrontend"); // ESTO ACTIVA CORS
 app.UseAuthentication(); // JWT primero
 app.UseAuthorization();
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
 app.MapControllers();
 
 app.Run();

@@ -102,6 +102,40 @@ namespace API.Migrations
                     b.ToTable("Clientes");
                 });
 
+            modelBuilder.Entity("Dominio.Entidades.Rol", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nombre = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nombre = "Abogado"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nombre = "Soporte"
+                        });
+                });
+
             modelBuilder.Entity("Dominio.Entidades.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -110,21 +144,20 @@ namespace API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Contraseña")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Rol")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -134,6 +167,21 @@ namespace API.Migrations
                         .IsUnique();
 
                     b.ToTable("Usuarios", (string)null);
+                });
+
+            modelBuilder.Entity("Dominio.Entidades.UsuarioRol", b =>
+                {
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RolId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UsuarioId", "RolId");
+
+                    b.HasIndex("RolId");
+
+                    b.ToTable("UsuarioRoles");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.Caso", b =>
@@ -147,9 +195,38 @@ namespace API.Migrations
                     b.Navigation("Cliente");
                 });
 
+            modelBuilder.Entity("Dominio.Entidades.UsuarioRol", b =>
+                {
+                    b.HasOne("Dominio.Entidades.Rol", "Rol")
+                        .WithMany("UsuarioRoles")
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Entidades.Usuario", "Usuario")
+                        .WithMany("UsuarioRoles")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rol");
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("Dominio.Entidades.Cliente", b =>
                 {
                     b.Navigation("Casos");
+                });
+
+            modelBuilder.Entity("Dominio.Entidades.Rol", b =>
+                {
+                    b.Navigation("UsuarioRoles");
+                });
+
+            modelBuilder.Entity("Dominio.Entidades.Usuario", b =>
+                {
+                    b.Navigation("UsuarioRoles");
                 });
 #pragma warning restore 612, 618
         }
