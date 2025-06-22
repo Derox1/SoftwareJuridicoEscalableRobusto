@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Dominio.Entidades;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -26,7 +27,7 @@ namespace Aplicacion.Servicios.Auth
             {
                 new Claim(ClaimTypes.Email, email),
                 new Claim(ClaimTypes.NameIdentifier, usuarioId.ToString()),
-                new Claim(ClaimTypes.Name, email)
+                new Claim(ClaimTypes.Name, email),
             };
 
             // Claims de roles

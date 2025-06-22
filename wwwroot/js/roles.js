@@ -44,7 +44,8 @@ async function cargarRoles() {
 
 
 async function cargarRolesAsignados(usuarioId) {
-    const res = await fetch(`${apiBase}/usuarios/${usuarioId}/roles`, {
+    const res = await fetch(`${apiBase}/roles/${usuarioId}`, {
+
         headers: {
             Authorization: `Bearer ${localStorage.getItem("jwt_token")}`
         }
@@ -104,7 +105,8 @@ document.getElementById("btnAsignarRol")?.addEventListener("click", async () => 
     }
 
     try {
-        const res = await fetch(`${apiBase}/usuarios/${usuarioId}/roles/${nombreRol}`, {
+        const res = await fetch(`${apiBase}/roles/${usuarioId}/${nombreRol}`, {
+
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("jwt_token")}`
@@ -163,7 +165,7 @@ document.getElementById("btnAsignarRol")?.addEventListener("click", async () => 
             if (!confirmacion.isConfirmed) return;
 
             try {
-                const res = await fetch(`${apiBase}/usuarios/${usuarioId}/roles/${rol}`, {
+                const res = await fetch(`${apiBase}/roles/${usuarioId}/${rol}`, {
                     method: "DELETE",
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("jwt_token")}`
@@ -201,26 +203,80 @@ document.getElementById("btnAsignarRol")?.addEventListener("click", async () => 
             }
         }
     });
+
+
+
+    /* VALIDAMOS si el usuario tiene multiples roles a la vez para saber que mostrar */
+function verificarAccesoPorRol(rolesPermitidos = []) {
+    const token = localStorage.getItem("jwt_token");
+    if (!token) {
+        Swal.fire({
+            icon: "error",
+            title: "Sesión inválida",
+            text: "Debes iniciar sesión.",
+        }).then(() => {
+            window.location.href = "login.html";
+        });
+        return false;
+    }
+
+    try {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        const rol = payload["role"] || payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+        const roles = Array.isArray(rol) ? rol : [rol];
+        const tieneAcceso = roles.some(r => rolesPermitidos.includes(r));
+
+        if (!tieneAcceso) {
+            Swal.fire({
+                icon: "error",
+                title: "Acceso denegado",
+                text: "No tienes permisos para acceder a esta sección.",
+            }).then(() => {
+                // 🔐 Limpieza para evitar loop infinito
+                localStorage.removeItem("jwt_token");
+                localStorage.removeItem("usuario_actual");
+                window.location.href = "login.html";
+            });
+            return false;
+        }
+
+        return true;
+    } catch (error) {
+        console.error("Error al verificar el token:", error);
+        Swal.fire({
+            icon: "error",
+            title: "Token inválido",
+            text: "No se pudo verificar tu sesión.",
+        }).then(() => {
+            localStorage.clear();
+            window.location.href = "login.html";
+        });
+        return false;
+    }
+}
 // ===========================
 // 🚀 INICIALIZACIÓN AL CARGAR
 // ===========================
-document.addEventListener("DOMContentLoaded", () => {
+window.initRolesModule = function () {
+    if (!verificarAccesoPorRol(["Admin"])) return;
 
-    // ✅ Instancia Choices con diseño ya aplicado
+    // Aquí va TODO lo que ya tenías en tu roles.js
     choicesUsuarios = new Choices("#selectUsuarios", {
         searchEnabled: false,
         shouldSort: false,
         itemSelectText: "",
     });
+
     choicesRoles = new Choices("#selectRoles", {
         searchEnabled: false,
         shouldSort: false,
         itemSelectText: "",
     });
-    // ✅ Aplica clase visual a los contenedores generados por Choices.js
+
     document.querySelector("#selectUsuarios").closest(".choices").classList.add("input-glass");
     document.querySelector("#selectRoles").closest(".choices").classList.add("input-glass");
 
     cargarUsuarios();
     cargarRoles();
-});
+};

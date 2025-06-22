@@ -72,10 +72,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Aplicacion\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\.gitignore" />
     <None Include="wwwroot\css\dashboard.css" />
     <None Include="wwwroot\css\login.css" />
@@ -87,6 +83,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="Aplicacion\Aplicacion.csproj" />
     <ProjectReference Include="Infraestructura\Infraestructura.csproj" />
   </ItemGroup>
 

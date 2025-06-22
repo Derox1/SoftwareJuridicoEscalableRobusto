@@ -32,6 +32,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Aplicacion\\Aplicacion.csproj": {
+                "projectPath": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Aplicacion\\Aplicacion.csproj"
+              },
               "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Infraestructura\\Infraestructura.csproj": {
                 "projectPath": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\Infraestructura\\Infraestructura.csproj"
               }
@@ -177,6 +180,10 @@
             "FluentValidation": {
               "target": "Package",
               "version": "[11.11.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.5.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",

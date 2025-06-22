@@ -1,4 +1,8 @@
-﻿using Infraestructura.Persistencia;
+﻿using Aplicacion.Excepciones;
+using Aplicacion.Usuarios.Commands;
+using Aplicacion.Usuarios.Queries;
+using Infraestructura.Persistencia;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,86 +16,64 @@ namespace API.Controllers
     {
         private readonly AppDbContext _context;
 
-        public UsuariosController(AppDbContext context)
+        //invocamos mediator para la contraseña 
+        private readonly IMediator _mediator;
+
+
+        public UsuariosController(AppDbContext context, IMediator mediator)
         {
             _context = context;
+            _mediator = mediator;
         }
+
 
         [HttpGet]
         public async Task<IActionResult> ObtenerUsuarios()
         {
-            var usuarios = await _context.Usuarios
-                .Select(u => new { u.Id, u.Nombre })
-                .ToListAsync();
-
-            return Ok(usuarios);
+            var resultado = await _mediator.Send(new ObtenerUsuariosQuery());
+            return Ok(resultado);
         }
-      
+
+
         [HttpGet("{usuarioId}/roles")]
         public async Task<IActionResult> ObtenerRolesAsignados(int usuarioId)
         {
-            var roles = await _context.UsuarioRoles
-                .Where(ur => ur.UsuarioId == usuarioId)
-                .Include(ur => ur.Rol)
-                .Select(ur => new { ur.Rol.Nombre })
-                .ToListAsync();
-
+            /*// 🧠 Se utiliza MediatR para enviar una Query que representa la solicitud de obtener roles.
+            // Esto delega la responsabilidad al Handler correspondiente (en la capa de Aplicación).*/
+            //throw new NotFoundException("Este usuario no existe en la base de datos (prueba).");
+            var roles = await _mediator.Send(new ObtenerRolesPorUsuarioQuery(usuarioId));
             return Ok(roles);
         }
 
-        [HttpDelete("{usuarioId}/roles/{nombreRol}")]
-        public async Task<IActionResult> QuitarRol(int usuarioId, string nombreRol)
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> CrearUsuario([FromBody] CrearUsuarioCommand comando)
         {
-            // ✅ Validación de emergencia (opcional, profesional)
-            if (usuarioId == 1 && nombreRol == "Admin")
+            try
             {
-                return BadRequest(new { detail = "No se puede quitar el rol Admin del usuario principal." });
+                var id = await _mediator.Send(comando);
+                return CreatedAtAction(nameof(CrearUsuario), new { id = id }, new { id });
             }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { detail = "❌ Error al crear usuario desde el controlador", error = ex.Message });
+            }
+        }
 
-            //Esta asegura que "admin", "Admin " o " ADMIN" sean interpretados igual ✅
-            var rol = await _context.Roles
-                .FirstOrDefaultAsync(r => r.Nombre.ToLower() == nombreRol.ToLower().Trim());
-            if (rol == null)
-                return NotFound(new { detail = "Rol no encontrado" });
-
-            var usuarioRol = await _context.UsuarioRoles
-                .FirstOrDefaultAsync(ur => ur.UsuarioId == usuarioId && ur.RolId == rol.Id);
-
-            if (usuarioRol == null)
-                return NotFound(new { detail = "El usuario no tiene ese rol asignado" });
-
-            _context.UsuarioRoles.Remove(usuarioRol);
-            await _context.SaveChangesAsync();
-
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ActualizarUsuario(int id, [FromBody] ActualizarUsuarioCommand comando)
+        {
+            comando.Id = id; // Asigna el ID que vino por ruta
+            await _mediator.Send(comando);
             return Ok();
         }
 
-
-        [HttpPost("{usuarioId}/roles/{nombreRol}")]
-        public async Task<IActionResult> AsignarRol(int usuarioId, string nombreRol)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> EliminarUsuario(int id)
         {
-            var usuario = await _context.Usuarios.FindAsync(usuarioId);
-            if (usuario == null)
-                return NotFound(new { detail = "Usuario no encontrado" });
-
-            var rol = await _context.Roles
-                .FirstOrDefaultAsync(r => r.Nombre.ToLower() == nombreRol.ToLower().Trim());
-            if (rol == null)
-                return NotFound(new { detail = "Rol no encontrado" });
-
-            var yaAsignado = await _context.UsuarioRoles
-                .AnyAsync(ur => ur.UsuarioId == usuarioId && ur.RolId == rol.Id);
-            if (yaAsignado)
-                return Conflict(new { detail = "El usuario ya tiene este rol asignado" });
-
-            _context.UsuarioRoles.Add(new()
-            {
-                UsuarioId = usuarioId,
-                RolId = rol.Id
-            });
-
-            await _context.SaveChangesAsync();
-            return Ok();
+            await _mediator.Send(new EliminarUsuarioCommand(id));
+            return NoContent();
         }
 
 

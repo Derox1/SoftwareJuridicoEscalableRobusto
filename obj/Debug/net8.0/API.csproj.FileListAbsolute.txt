@@ -18,6 +18,8 @@ C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\FluentValidation.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\Humanizer.dll
+C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\MediatR.dll
+C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\MediatR.Contracts.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\bin\Debug\net8.0\Microsoft.Build.Locator.dll

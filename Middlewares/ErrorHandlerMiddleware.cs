@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Aplicacion.Excepciones;
 namespace API.Middlewares
+
 {
     public class ErrorHandlerMiddleware
     {
@@ -27,15 +29,20 @@ namespace API.Middlewares
             catch (Exception ex)
             {
                 _logger.LogError(ex, "❌ Error no controlado");
+                var statusCode = ex switch
+                {
+                    NotFoundException => (int)HttpStatusCode.NotFound,
+                    _ => (int)HttpStatusCode.InternalServerError
+                };
 
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                context.Response.StatusCode = statusCode;
                 context.Response.ContentType = "application/json";
 
                 var error = new ProblemDetails
                 {
                     Status = context.Response.StatusCode,
-                    Title = "Error interno del servidor",
-                    Detail = "Ocurrió un error inesperado. Contacta al soporte si persiste.",
+                    Title = statusCode == 404 ? "No encontrado" : "Error interno del servidor",
+                    Detail = ex.Message,
                     Instance = context.Request.Path
                 };
 
@@ -46,8 +53,6 @@ namespace API.Middlewares
                 };
 
                 var json = JsonSerializer.Serialize(error, options);
-
-                // ✅ Asegúrate de usar await aquí (sin return)
                 await context.Response.WriteAsync(json);
             }
 

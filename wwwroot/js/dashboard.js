@@ -4,6 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
     /*➡️ Espera que el DOM esté completamente cargado antes de ejecutar el código JS (buena práctica para manipular el DOM).
     
     */
+    function obtenerRolesDesdeJWT() {
+        const token = localStorage.getItem("jwt_token");
+        if (!token) return [];
+        try {
+            const payloadBase64 = token.split('.')[1];
+            const payloadJson = atob(payloadBase64);
+            const payload = JSON.parse(payloadJson);
+            const roles = payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+            return Array.isArray(roles) ? roles : [roles]; // Siempre devuelve un array
+        } catch (e) {
+            console.error("Error al decodificar el token:", e);
+            return [];
+        }
+    }
 
     const apiUrl = "https://localhost:7266/api/Casos";
     /*➡️ Define la URL base para la API de casos.
@@ -19,9 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
 */
 
     const saludo = document.getElementById("saludoUsuario");
-    /*➡️ Elemento donde mostrarás “Hola, Usuario”.
-    
-    */
+    /*➡️ Elemento donde mostrarás “Hola, Usuario”.*/
+    const roles = obtenerRolesDesdeJWT();
+    console.log("Rol del usuario:", roles);
+    aplicarVisibilidadPorRol(roles);
+
     // Aplicamos Choise.Js
     const filtroEstado = document.getElementById("filtroEstado");
     const choicesEstado = new Choices(filtroEstado, {
@@ -70,6 +86,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (saludo && usuario.nombre) {
         saludo.textContent = `Hola, ${usuario.nombre}`;
+    }
+    function aplicarVisibilidadPorRol(roles) {
+        const gestionRoles = document.getElementById("seccion-gestion-roles");
+        const btnNuevoCaso = document.getElementById("btnNuevoCaso");
+        const tablaCasos = document.getElementById("tablaCasosWrapper");
+        const seccionUsuarios = document.getElementById("seccion-usuarios");
+        const btnNuevoUsuario = document.getElementById("btnNuevoUsuario");
+
+
+        // Si no hay roles, ocultar todo
+        if (!roles || roles.length === 0) {
+            gestionRoles?.classList.add("d-none");
+            btnNuevoCaso?.classList.add("d-none");
+            tablaCasos?.classList.add("d-none");
+            seccionUsuarios?.classList.add("d-none");
+            btnNuevoUsuario?.classList.add("d-none");
+            return;
+        }
+        // Usa validaciones antes de modificar estilos:
+        if (seccionUsuarios && roles.includes("Admin")) {
+            seccionUsuarios.classList.remove("d-none");
+        }
+
+        if (btnNuevoUsuario && roles.includes("Admin")) {
+            btnNuevoUsuario.classList.remove("d-none");
+        }
+
+        if (roles.includes("Admin")) {
+            gestionRoles?.classList.remove("d-none");
+            btnNuevoCaso?.classList.remove("d-none");
+            tablaCasos?.classList.remove("d-none");
+            seccionUsuarios?.classList.remove("d-none");
+            btnNuevoUsuario?.classList.remove("d-none");
+        }
+
+        if (roles.includes("Abogado")) {
+            btnNuevoCaso?.classList.remove("d-none");
+            tablaCasos?.classList.remove("d-none");
+        }
+        if (roles.includes("Soporte")) {
+            // Ocultar botón 'Nuevo Caso'
+            document.getElementById("btnNuevoCaso")?.classList.add("d-none");
+
+            // Desactivar los botones Editar y Eliminar de la tabla
+            document.querySelectorAll(".btn-outline-warning, .btn-eliminar").forEach(btn => {
+                btn.classList.add("d-none");
+            }); btnNuevoUsuario
+
+            // Ocultar módulo de asignación de roles (si es visible)
+            document.getElementById("modulo-roles")?.classList.add("d-none");
+        }
+
+        if (roles.includes("Soporte")) {
+            seccionUsuarios?.classList.remove("d-none");
+            btnNuevoUsuario?.classList.remove("d-none");
+        }
     }
 
     /*➡️ Personaliza el saludo si el usuario tiene nombre guardado.*/
@@ -384,7 +456,32 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById("form-cliente").readOnly = true; //  SOLO LECTURA
                     document.getElementById("grupo-cliente").style.display = "block"; //  Mostrar campo
                     document.getElementById("form-descripcion").value = data.descripcion;
-                    choicesEstadoForm.setChoiceByValue(data.estado);
+
+                    choicesEstadoForm.clearChoices();
+                    const estadoActual = data.estado;
+                    let opcionesEstado = [];
+
+                    if (estadoActual === "Pendiente") {
+                        opcionesEstado = [
+                            { value: "EnProceso", label: "En proceso" }
+                        ];
+                    } else if (estadoActual === "EnProceso") {
+                        opcionesEstado = [
+                            { value: "Cerrado", label: "Cerrado" }
+                        ];
+                    } else if (estadoActual === "Cerrado") {
+                        opcionesEstado = [
+                            { value: "Cerrado", label: "Cerrado", disabled: true }
+                        ];
+                    }
+                    choicesEstadoForm.setChoices(opcionesEstado, 'value', 'label', false);
+                    if (opcionesEstado.length === 1) {
+                        choicesEstadoForm.setChoiceByValue(opcionesEstado[0].value);
+                    }
+
+
+
+                    //choicesEstadoForm.setChoiceByValue(data.estado);
                     choicesTipoForm.setChoiceByValue(data.tipoCaso);
 
 

@@ -337,19 +337,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "API.Controllers.UsuariosController",
-    "Method": "ObtenerUsuarios",
-    "RelativePath": "api/Usuarios",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.UsuariosController",
+    "ContainingType": "API.Controllers.RolesController",
     "Method": "ObtenerRolesAsignados",
-    "RelativePath": "api/Usuarios/{usuarioId}/roles",
+    "RelativePath": "api/Roles/{usuarioId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -363,9 +353,30 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "API.Controllers.UsuariosController",
+    "ContainingType": "API.Controllers.RolesController",
+    "Method": "AsignarRol",
+    "RelativePath": "api/Roles/{usuarioId}/{nombreRol}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "nombreRol",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.RolesController",
     "Method": "QuitarRol",
-    "RelativePath": "api/Usuarios/{usuarioId}/roles/{nombreRol}",
+    "RelativePath": "api/Roles/{usuarioId}/{nombreRol}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -385,20 +396,78 @@
   },
   {
     "ContainingType": "API.Controllers.UsuariosController",
-    "Method": "AsignarRol",
-    "RelativePath": "api/Usuarios/{usuarioId}/roles/{nombreRol}",
+    "Method": "ObtenerUsuarios",
+    "RelativePath": "api/Usuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UsuariosController",
+    "Method": "CrearUsuario",
+    "RelativePath": "api/Usuarios",
     "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comando",
+        "Type": "Aplicacion.Usuarios.Commands.CrearUsuarioCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UsuariosController",
+    "Method": "ActualizarUsuario",
+    "RelativePath": "api/Usuarios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "comando",
+        "Type": "Aplicacion.Usuarios.Commands.ActualizarUsuarioCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UsuariosController",
+    "Method": "EliminarUsuario",
+    "RelativePath": "api/Usuarios/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UsuariosController",
+    "Method": "ObtenerRolesAsignados",
+    "RelativePath": "api/Usuarios/{usuarioId}/roles",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "usuarioId",
         "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "nombreRol",
-        "Type": "System.String",
         "IsRequired": true
       }
     ],

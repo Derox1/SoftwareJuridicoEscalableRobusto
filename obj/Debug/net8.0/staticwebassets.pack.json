@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\img\\scales.svg"
     },
     {
+      "Id": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\Usuarios.js",
+      "PackagePath": "staticwebassets\\js\\Usuarios.js"
+    },
+    {
       "Id": "C:\\Dev\\SoftwareJuridicoEscalableRobusto\\wwwroot\\js\\dashboard.js",
       "PackagePath": "staticwebassets\\js\\dashboard.js"
     },

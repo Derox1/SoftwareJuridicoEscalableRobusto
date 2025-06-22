@@ -18,8 +18,7 @@ namespace Infraestructura.Persistencia
         public DbSet<Rol> Roles { get; set; }
         public DbSet<UsuarioRol> UsuarioRoles { get; set; }
 
-
-        //este codigo es para
+        /*   Esto le dice a EF: "Busca todas las clases que implementen IEntityTypeConfiguration<T> y aplícalas automáticamente".*/
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); 
@@ -49,6 +48,8 @@ namespace Infraestructura.Persistencia
                 .HasForeignKey(ur => ur.RolId);
 
             // Semilla de roles
+            /*✔️ Perfecto para pruebas y para evitar tener que crearlos a mano.
+            */
             modelBuilder.Entity<Rol>().HasData(
                 new Rol { Id = 1, Nombre = "Admin" },
                 new Rol { Id = 2, Nombre = "Abogado" },

@@ -11,6 +11,8 @@ C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\ne
 C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\net8.0\Castle.Core.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\net8.0\FluentAssertions.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\net8.0\FluentValidation.dll
+C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\net8.0\MediatR.dll
+C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\net8.0\MediatR.Contracts.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\net8.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Dev\SoftwareJuridicoEscalableRobusto\CasosJuridicosRobusto.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
